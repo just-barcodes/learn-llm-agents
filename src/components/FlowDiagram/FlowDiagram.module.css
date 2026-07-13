@@ -1,0 +1,154 @@
+.wrap {
+  background: #181b1b;
+  border: 1px solid #343838;
+  border-radius: 18px;
+  padding: 26px 28px 20px;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.title {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.stepButtons {
+  display: flex;
+  gap: 10px;
+  flex: none;
+  margin-left: auto;
+}
+.restart {
+  cursor: pointer;
+  padding: 9px 16px;
+  border-radius: 8px;
+  border: 1.5px solid #4a4f4e;
+  font-weight: 600;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--fg-muted);
+  background: transparent;
+  transition: all 0.2s;
+}
+.restart:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.next {
+  cursor: pointer;
+  padding: 9px 20px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  font-weight: 700;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--accent-ink);
+  transition: background 0.2s;
+}
+.next:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+.next:disabled {
+  cursor: default;
+  background: #2c3232;
+  color: var(--fg-dim);
+}
+
+.scene {
+  position: relative;
+}
+.node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.connector {
+  position: absolute;
+}
+.chip {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  animation: chipPop 0.35s ease-out;
+  z-index: 2;
+}
+.chipText {
+  font: 500 11.5px var(--font-mono);
+  border: 1px solid;
+  padding: 7px 11px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.note {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #f0e6d2;
+  font-weight: 600;
+  margin: 14px 0 0;
+  padding: 12px 16px;
+  background: rgba(232, 160, 76, 0.09);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+}
+
+.phases {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  border-top: 1px dashed #2c3030;
+  padding-top: 12px;
+  margin-top: 14px;
+}
+.phase {
+  cursor: pointer;
+  padding: 7px 12px;
+  border-radius: 7px;
+  border: 1.5px solid;
+  background: transparent;
+  font: 600 11px var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.25s;
+}
+.phase:hover {
+  opacity: 1 !important;
+}
+
+.wireTap {
+  margin-top: 14px;
+  background: #141616;
+  border: 1px solid #2c3030;
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.wireHead {
+  font: 600 11px var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin-bottom: 10px;
+}
+.wireTitle {
+  font: 600 10.5px var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.wireRaw {
+  margin: 0;
+  background: #1a1d1d;
+  border-left: 3px solid var(--accent);
+  color: #cfe0bd;
+  font: 400 12px/1.6 var(--font-mono);
+  padding: 11px 14px;
+  border-radius: 0 8px 8px 0;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}

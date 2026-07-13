@@ -2,6 +2,7 @@ import { Section } from '../../components/Section/Section.tsx';
 import { Tabs, type TabItem } from '../../components/Tabs/Tabs.tsx';
 import text from '../../styles/text.module.css';
 import { ConversationPanel } from './ConversationPanel.tsx';
+import { ToolsPanel } from './ToolsPanel.tsx';
 import styles from './BuildUp.module.css';
 
 function Placeholder({ title }: { title: string }) {
@@ -15,11 +16,7 @@ function Placeholder({ title }: { title: string }) {
 
 const tabs: TabItem[] = [
   { id: 'chat', label: '1 · LLM chat', render: () => <ConversationPanel /> },
-  {
-    id: 'tools',
-    label: '2 · Simple agent (tools)',
-    render: () => <Placeholder title="How an agent uses a tool" />,
-  },
+  { id: 'tools', label: '2 · Simple agent (tools)', render: () => <ToolsPanel /> },
   {
     id: 'rag',
     label: '3 · Retrieval (RAG)',
