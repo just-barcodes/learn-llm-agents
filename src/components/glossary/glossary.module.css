@@ -1,0 +1,22 @@
+.term {
+  border-bottom: 2px dotted var(--accent);
+  cursor: help;
+  color: var(--fg);
+}
+
+.tooltip {
+  position: fixed;
+  max-width: 300px;
+  background: #f6f1e7;
+  color: #2e2a24;
+  border-radius: 10px;
+  padding: 12px 15px;
+  font: 400 13px/1.6 var(--font-sans);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  z-index: 50;
+  pointer-events: none;
+}
+.tooltipTitle {
+  font-weight: 700;
+  margin-bottom: 3px;
+}
