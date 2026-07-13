@@ -1,0 +1,123 @@
+.subAgent {
+  margin-top: 6px;
+  background: #1a1d1d;
+  border: 1px solid #3a2d15;
+  border-radius: 10px;
+  padding: 14px 16px;
+  animation: popIn 0.3s ease-out;
+}
+.subAgentTitle {
+  font: 600 11px var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.subLoop {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.subLoopItem {
+  flex: 1;
+  min-width: 150px;
+  background: #232827;
+  border: 1px solid #343838;
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.subLoopIcon {
+  font-size: 15px;
+}
+.subLoopText {
+  font: 400 11px/1.5 var(--font-mono);
+  color: var(--green-soft);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 16px;
+  align-items: start;
+  margin-top: 16px;
+}
+@media (max-width: 680px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+.gridLabel {
+  font: 600 10.5px var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin-bottom: 10px;
+}
+.resources {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.resource {
+  border: 1.5px solid #343838;
+  border-radius: 12px;
+  padding: 11px 12px;
+  transition: all 0.3s;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.resourceIcon {
+  font-size: 21px;
+  flex: none;
+}
+.resourceName {
+  font-weight: 600;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+.resourceDesc {
+  font-size: 10.5px;
+  line-height: 1.4;
+  color: var(--fg-dim);
+}
+
+.todo {
+  background: #141616;
+  border: 1px solid #2c3030;
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.todoLabel {
+  font: 600 11px var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin-bottom: 14px;
+}
+.todoItems {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.todoItem {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.todoBox {
+  font: 400 15px var(--font-mono);
+  line-height: 1.4;
+  flex: none;
+}
+.todoText {
+  font: 400 12.5px/1.45 var(--font-mono);
+}
+.todoEmpty {
+  font: 400 12.5px/1.6 var(--font-mono);
+  color: #5a5f5e;
+  margin: 0;
+}

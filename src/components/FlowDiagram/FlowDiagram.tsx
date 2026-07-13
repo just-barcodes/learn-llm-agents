@@ -20,6 +20,8 @@ export interface FlowChip {
   bg: string;
   border: string;
   fg: string;
+  /** Allow the chip to wrap across lines instead of staying on one line. */
+  wrap?: boolean;
 }
 
 export interface FlowStep {
@@ -38,7 +40,7 @@ export interface FlowNode {
   id: string;
   left: string;
   top: string;
-  render: (active: boolean, color: string) => React.ReactNode;
+  render: (active: boolean, color: string, step: number) => React.ReactNode;
 }
 
 const DASH_ANIM: Record<FlowDir, string> = {
@@ -96,6 +98,8 @@ interface FlowDiagramProps {
   nodes: FlowNode[];
   steps: FlowStep[];
   sceneHeight: number;
+  /** Extra content rendered between the scene and the caption (e.g. a live TODO). */
+  extras?: (step: number) => React.ReactNode;
 }
 
 /**
@@ -103,7 +107,13 @@ interface FlowDiagramProps {
  * that walks between them, a message chip, a caption, clickable phase markers,
  * and an "under the hood" wire tap showing the raw bytes for each step.
  */
-export function FlowDiagram({ title, nodes, steps, sceneHeight }: FlowDiagramProps) {
+export function FlowDiagram({
+  title,
+  nodes,
+  steps,
+  sceneHeight,
+  extras,
+}: FlowDiagramProps) {
   const [step, setStep] = useState(0);
   const cur = steps[step];
   const last = step === steps.length - 1;
@@ -135,7 +145,7 @@ export function FlowDiagram({ title, nodes, steps, sceneHeight }: FlowDiagramPro
               className={styles.node}
               style={{ left: node.left, top: node.top }}
             >
-              {node.render(active, cur.color)}
+              {node.render(active, cur.color, step)}
             </div>
           );
         })}
@@ -164,7 +174,9 @@ export function FlowDiagram({ title, nodes, steps, sceneHeight }: FlowDiagramPro
           style={{ left: cur.chip.left, top: cur.chip.top }}
         >
           <span
-            className={styles.chipText}
+            className={
+              cur.chip.wrap ? `${styles.chipText} ${styles.chipWrap}` : styles.chipText
+            }
             style={{
               background: cur.chip.bg,
               borderColor: cur.chip.border,
@@ -175,6 +187,8 @@ export function FlowDiagram({ title, nodes, steps, sceneHeight }: FlowDiagramPro
           </span>
         </div>
       </div>
+
+      {extras?.(step)}
 
       <p className={styles.note} style={{ borderLeftColor: cur.color }}>
         {cur.note}

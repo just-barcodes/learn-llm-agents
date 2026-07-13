@@ -36,11 +36,13 @@ export function LlmFlowNode({
   active,
   color,
   size = 72,
+  label,
   sub,
 }: {
   active?: boolean;
   color?: string;
   size?: number;
+  label?: string;
   sub?: string;
 }) {
   const border = active && color ? color : LLM_ACCENT;
@@ -66,7 +68,7 @@ export function LlmFlowNode({
         </svg>
         <span className={styles.llmLabel}>LLM</span>
       </div>
-      {sub && <NodeLabel label={sub} />}
+      {label ? <NodeLabel label={label} sub={sub} /> : sub && <NodeLabel label={sub} />}
     </>
   );
 }

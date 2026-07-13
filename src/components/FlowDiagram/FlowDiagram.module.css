@@ -85,6 +85,13 @@
   border-radius: 6px;
   white-space: nowrap;
 }
+.chipWrap {
+  display: inline-block;
+  max-width: 240px;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.4;
+}
 
 .note {
   font-size: 14.5px;

@@ -4,6 +4,7 @@ import text from '../../styles/text.module.css';
 import { ConversationPanel } from './ConversationPanel.tsx';
 import { ToolsPanel } from './ToolsPanel.tsx';
 import { RagPanel } from './RagPanel.tsx';
+import { OrchestrationPanel } from './OrchestrationPanel.tsx';
 import styles from './BuildUp.module.css';
 
 function Placeholder({ title }: { title: string }) {
@@ -19,11 +20,7 @@ const tabs: TabItem[] = [
   { id: 'chat', label: '1 · LLM chat', render: () => <ConversationPanel /> },
   { id: 'tools', label: '2 · Simple agent (tools)', render: () => <ToolsPanel /> },
   { id: 'rag', label: '3 · Retrieval (RAG)', render: () => <RagPanel /> },
-  {
-    id: 'orch',
-    label: '4 · Orchestration',
-    render: () => <Placeholder title="One agent, many tools, RAG, and a sub-agent" />,
-  },
+  { id: 'orch', label: '4 · Orchestration', render: () => <OrchestrationPanel /> },
   {
     id: 'safety',
     label: '5 · Safety & limits',
