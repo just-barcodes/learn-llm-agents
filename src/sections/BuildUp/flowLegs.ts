@@ -71,18 +71,38 @@ export const CHIP_AT = {
 
 /** Message-chip colour palettes keyed by the actor/phase they represent. */
 export const CHIP_COLOR = {
-  grey: { bg: '#343838', border: '#4a4f4e', fg: '#d8cdb8' },
-  amber: { bg: '#3a2d15', border: '#e8a04c', fg: '#e8d9bd' },
-  green: { bg: '#1e2620', border: '#7a8a5e', fg: '#cfe0bd' },
-  greenOut: { bg: '#3d4a35', border: '#7a8a5e', fg: '#cfe0bd' },
-  purple: { bg: '#2a2135', border: '#c98adf', fg: '#e6d5f2' },
+  grey: {
+    bg: 'var(--chip-neutral-bg)',
+    border: 'var(--chip-neutral-border)',
+    fg: 'var(--chip-neutral-fg)',
+  },
+  amber: {
+    bg: 'var(--chip-accent-bg)',
+    border: 'var(--accent)',
+    fg: 'var(--chip-accent-fg)',
+  },
+  green: {
+    bg: 'var(--chip-green-bg)',
+    border: 'var(--green)',
+    fg: 'var(--chip-green-fg)',
+  },
+  greenOut: {
+    bg: 'var(--chip-green-strong-bg)',
+    border: 'var(--green)',
+    fg: 'var(--chip-green-fg)',
+  },
+  purple: {
+    bg: 'var(--chip-violet-bg)',
+    border: 'var(--purple)',
+    fg: 'var(--chip-violet-fg)',
+  },
 };
 
 /** Line/accent colours used for each phase of the flows. */
 export const LINE = {
-  neutral: '#b8bcb2',
-  amber: '#e8a04c',
-  green: '#7a8a5e',
-  greenSoft: '#9fb28a',
-  purple: '#c98adf',
+  neutral: 'var(--fg-muted)',
+  amber: 'var(--accent)',
+  green: 'var(--green)',
+  greenSoft: 'var(--green-soft)',
+  purple: 'var(--purple)',
 };

@@ -25,8 +25,8 @@
 .core {
   max-width: 760px;
   margin: 52px auto 0;
-  background: #262b2a;
-  border: 1px solid #343838;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 30px 26px;
   overflow: hidden;
@@ -69,12 +69,12 @@
   white-space: nowrap;
 }
 .tokenIn {
-  background: #343838;
-  color: #d8cdb8;
+  background: var(--border);
+  color: var(--chip-neutral-fg);
 }
 .tokenOut {
-  background: #3d4a35;
-  color: #cfe0bd;
+  background: var(--chip-green-strong-bg);
+  color: var(--chip-green-fg);
 }
 
 .badge {
@@ -88,11 +88,11 @@
 }
 .badgeIn {
   color: var(--fg-dim);
-  border: 1px dashed #4a4f4e;
+  border: 1px dashed var(--node-idle-border);
 }
 .badgeOut {
   color: var(--green-soft);
-  border: 1px dashed #4a5540;
+  border: 1px dashed var(--green);
 }
 .spacer {
   flex: none;
@@ -124,8 +124,8 @@
 /* ---- prompt / completion readout ---- */
 .readout {
   margin-top: 16px;
-  background: #141616;
-  border: 1px solid #2c3030;
+  background: var(--inset-bg);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 16px 18px;
   text-align: left;
@@ -151,10 +151,10 @@
   font: 400 13.5px/1.5 var(--font-mono);
 }
 .valueIn {
-  color: #d8cdb8;
+  color: var(--chip-neutral-fg);
 }
 .valueOut {
-  color: #cfe0bd;
+  color: var(--chip-green-fg);
 }
 .caret {
   animation: blink 1s step-end infinite;

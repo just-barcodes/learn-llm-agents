@@ -1,7 +1,7 @@
 import styles from './nodes.module.css';
 
-const IDLE_BORDER = '#4a4f4e';
-const LLM_ACCENT = '#e8a04c';
+const IDLE_BORDER = 'var(--node-idle-border)';
+const LLM_ACCENT = 'var(--accent)';
 
 export function NodeLabel({ label, sub }: { label: string; sub?: string }) {
   return (
@@ -22,8 +22,8 @@ export function UserNode({ active, color }: { active: boolean; color: string }) 
         aria-label="You"
       >
         <svg viewBox="0 0 24 24" width="54%" height="54%">
-          <circle cx="12" cy="8.4" r="4.1" fill="#d8cdb8" />
-          <path d="M4.4 20.5a7.6 7.6 0 0 1 15.2 0Z" fill="#d8cdb8" />
+          <circle cx="12" cy="8.4" r="4.1" fill="var(--icon-stroke)" />
+          <path d="M4.4 20.5a7.6 7.6 0 0 1 15.2 0Z" fill="var(--icon-stroke)" />
         </svg>
       </div>
       <NodeLabel label="You" />
@@ -154,11 +154,18 @@ export function HarnessNode({
             height="10"
             rx="2.2"
             fill="none"
-            stroke="#cdd2c8"
+            stroke="var(--icon-stroke)"
             strokeWidth="1.6"
           />
-          <rect x="10.2" y="10.2" width="3.6" height="3.6" rx="1" fill="#cdd2c8" />
-          <g stroke="#cdd2c8" strokeWidth="1.6" strokeLinecap="round">
+          <rect
+            x="10.2"
+            y="10.2"
+            width="3.6"
+            height="3.6"
+            rx="1"
+            fill="var(--icon-stroke)"
+          />
+          <g stroke="var(--icon-stroke)" strokeWidth="1.6" strokeLinecap="round">
             <line x1="10" y1="4.4" x2="10" y2="7" />
             <line x1="14" y1="4.4" x2="14" y2="7" />
             <line x1="10" y1="17" x2="10" y2="19.6" />

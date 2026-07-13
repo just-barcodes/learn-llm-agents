@@ -1,30 +1,154 @@
 /*
- * Design tokens — the shared palette, type, and spacing scale for the page.
- * Diagram-specific one-off colours stay local to their components; these are
- * the values reused across sections.
+ * Design tokens — a Selenized (Solarized-family) palette with matched light and
+ * dark variants. The raw `--s-*` palette flips by theme (system preference, or
+ * an explicit `data-theme` on <html>); every semantic and diagram token below
+ * is derived from it once, so the whole page re-themes from these values.
+ *
+ * Selenized by Jan Warchoł — https://github.com/jan-warchol/selenized
  */
+
+/* ---- raw palette: light (default) ---- */
 :root {
+  --s-bg0: #fbf3db;
+  --s-bg1: #ece3cc;
+  --s-bg2: #d5cdb6;
+  --s-dim: #909995;
+  --s-fg0: #53676d;
+  --s-fg1: #3a4d53;
+  --s-red: #d2212d;
+  --s-green: #489100;
+  --s-yellow: #ad8900;
+  --s-blue: #0072d4;
+  --s-magenta: #ca4898;
+  --s-cyan: #009c8f;
+  --s-orange: #c25d1e;
+  --s-violet: #8762c6;
+  --s-panel: #f2ead3;
+  --s-inset: #ece3cc;
+  --s-code: #e7ddc4;
+}
+
+/* ---- raw palette: dark ---- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --s-bg0: #103c48;
+    --s-bg1: #184956;
+    --s-bg2: #2d5b69;
+    --s-dim: #72898f;
+    --s-fg0: #adbcbc;
+    --s-fg1: #cad8d9;
+    --s-red: #fa5750;
+    --s-green: #75b938;
+    --s-yellow: #dbb32d;
+    --s-blue: #4695f7;
+    --s-magenta: #f275be;
+    --s-cyan: #41c7b9;
+    --s-orange: #ed8649;
+    --s-violet: #af88eb;
+    --s-panel: #0d3742;
+    --s-inset: #0b333d;
+    --s-code: #0a2f39;
+  }
+}
+
+/* explicit overrides win over the system preference */
+:root[data-theme='light'] {
+  --s-bg0: #fbf3db;
+  --s-bg1: #ece3cc;
+  --s-bg2: #d5cdb6;
+  --s-dim: #909995;
+  --s-fg0: #53676d;
+  --s-fg1: #3a4d53;
+  --s-red: #d2212d;
+  --s-green: #489100;
+  --s-yellow: #ad8900;
+  --s-blue: #0072d4;
+  --s-magenta: #ca4898;
+  --s-cyan: #009c8f;
+  --s-orange: #c25d1e;
+  --s-violet: #8762c6;
+  --s-panel: #f2ead3;
+  --s-inset: #ece3cc;
+  --s-code: #e7ddc4;
+}
+
+:root[data-theme='dark'] {
+  --s-bg0: #103c48;
+  --s-bg1: #184956;
+  --s-bg2: #2d5b69;
+  --s-dim: #72898f;
+  --s-fg0: #adbcbc;
+  --s-fg1: #cad8d9;
+  --s-red: #fa5750;
+  --s-green: #75b938;
+  --s-yellow: #dbb32d;
+  --s-blue: #4695f7;
+  --s-magenta: #f275be;
+  --s-cyan: #41c7b9;
+  --s-orange: #ed8649;
+  --s-violet: #af88eb;
+  --s-panel: #0d3742;
+  --s-inset: #0b333d;
+  --s-code: #0a2f39;
+}
+
+/* ---- semantic + diagram tokens (derived once from the raw palette) ---- */
+:root {
+  color-scheme: light dark;
+
   /* Surfaces */
-  --bg: #1d2020;
-  --surface: #242828;
-  --surface-raised: #2a2f2e;
-  --border: #3a3f3e;
+  --bg: var(--s-bg0);
+  --surface: var(--s-bg1);
+  --surface-raised: var(--s-bg2);
+  --border: var(--s-bg2);
+  --border-strong: color-mix(in srgb, var(--s-bg2), var(--s-dim) 55%);
+  --panel-bg: var(--s-panel);
+  --inset-bg: var(--s-inset);
+  --code-bg: var(--s-code);
 
   /* Text */
-  --fg: #e8e6df;
-  --fg-muted: #b8bcb2;
-  --fg-dim: #8a8f88;
+  --fg: var(--s-fg1);
+  --fg-muted: var(--s-fg0);
+  --fg-dim: var(--s-dim);
 
-  /* Accent (amber) */
-  --accent: #e8a04c;
-  --accent-hover: #f2b566;
-  --accent-ink: #1d2020;
+  /* Accent */
+  --accent: var(--s-orange);
+  --accent-hover: color-mix(in srgb, var(--s-orange), var(--fg) 22%);
+  --accent-ink: var(--s-bg0);
 
   /* Semantic hues used across diagrams */
-  --green: #7a8a5e;
-  --green-soft: #9fb28a;
-  --purple: #c98adf;
-  --coral: #d98c6a;
+  --green: var(--s-green);
+  --green-soft: color-mix(in srgb, var(--s-green), var(--fg) 30%);
+  --purple: var(--s-violet);
+  --coral: var(--s-red);
+  --blue: var(--s-blue);
+
+  /* Message chips / diagram blocks: subtle hue-tinted fills that read in both
+     themes because they mix the hue into the current surface / foreground. */
+  --chip-neutral-bg: var(--surface-raised);
+  --chip-neutral-border: var(--border-strong);
+  --chip-neutral-fg: var(--fg-muted);
+  --chip-accent-bg: color-mix(in srgb, var(--accent) 16%, var(--surface));
+  --chip-accent-fg: color-mix(in srgb, var(--accent) 62%, var(--fg));
+  --chip-green-bg: color-mix(in srgb, var(--green) 16%, var(--surface));
+  --chip-green-strong-bg: color-mix(in srgb, var(--green) 30%, var(--surface));
+  --chip-green-fg: color-mix(in srgb, var(--green) 55%, var(--fg));
+  --chip-violet-bg: color-mix(in srgb, var(--purple) 16%, var(--surface));
+  --chip-violet-fg: color-mix(in srgb, var(--purple) 55%, var(--fg));
+  --chip-coral-bg: color-mix(in srgb, var(--coral) 16%, var(--surface));
+  --chip-coral-fg: color-mix(in srgb, var(--coral) 62%, var(--fg));
+
+  /* Diagram nodes / hand-drawn icons */
+  --node-bg: var(--surface-raised);
+  --node-idle-border: var(--border-strong);
+  --icon-stroke: var(--fg-muted);
+
+  /* Code / wire-tap text */
+  --code-fg: var(--chip-green-fg);
+
+  /* Glossary tooltip (raised, high-contrast, themed) */
+  --tooltip-bg: var(--s-bg2);
+  --tooltip-fg: var(--fg);
 
   /* Type */
   --font-sans: 'Space Grotesk', system-ui, sans-serif;

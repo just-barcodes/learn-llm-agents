@@ -58,12 +58,7 @@ const nodes: FlowNode[] = [
     left: '38%',
     top: '84%',
     render: (active, color) => (
-      <IconNode
-        icon={<GlobeIcon />}
-        label="Web search"
-        active={active}
-        color={color}
-      />
+      <IconNode icon={<GlobeIcon />} label="Web search" active={active} color={color} />
     ),
   },
 ];

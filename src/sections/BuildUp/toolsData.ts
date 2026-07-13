@@ -30,7 +30,7 @@ const { grey: GREY, amber: AMBER, green: GREEN, greenOut: GREEN_OUT } = CHIP_COL
 export const TOOL_STEPS: FlowStep[] = [
   {
     label: '1 · you ask',
-    color: '#b8bcb2',
+    color: 'var(--fg-muted)',
     dir: 'R',
     connector: LEG_USER.R,
     chip: { text: '"Find hotels in Basel"', ...CHIP_USER, ...GREY },
@@ -40,7 +40,7 @@ export const TOOL_STEPS: FlowStep[] = [
   },
   {
     label: '2 · harness assembles the prompt',
-    color: '#b8bcb2',
+    color: 'var(--fg-muted)',
     dir: 'R',
     connector: LEG_LLM.R,
     chip: {
@@ -54,7 +54,7 @@ export const TOOL_STEPS: FlowStep[] = [
   },
   {
     label: '3 · LLM outputs special text',
-    color: '#e8a04c',
+    color: 'var(--accent)',
     dir: 'L',
     connector: LEG_LLM.L,
     chip: {
@@ -68,7 +68,7 @@ export const TOOL_STEPS: FlowStep[] = [
   },
   {
     label: '4 · harness runs the real search',
-    color: '#7a8a5e',
+    color: 'var(--green)',
     dir: 'D',
     connector: LEG_TOOL.D,
     chip: { text: 'the harness performs the actual web call', ...CHIP_TOOL, ...GREEN },
@@ -78,7 +78,7 @@ export const TOOL_STEPS: FlowStep[] = [
   },
   {
     label: '5 · raw results return',
-    color: '#7a8a5e',
+    color: 'var(--green)',
     dir: 'U',
     connector: LEG_TOOL.U,
     chip: { text: '10 pages of raw results', ...CHIP_TOOL, ...GREEN },
@@ -88,7 +88,7 @@ export const TOOL_STEPS: FlowStep[] = [
   },
   {
     label: '6 · full history + result sent again',
-    color: '#9fb28a',
+    color: 'var(--green-soft)',
     dir: 'R',
     connector: LEG_LLM.R,
     chip: {
@@ -102,7 +102,7 @@ export const TOOL_STEPS: FlowStep[] = [
   },
   {
     label: '7 · LLM writes the reply',
-    color: '#9fb28a',
+    color: 'var(--green-soft)',
     dir: 'L',
     connector: LEG_LLM.L,
     chip: {
@@ -116,7 +116,7 @@ export const TOOL_STEPS: FlowStep[] = [
   },
   {
     label: '8 · harness shows it to you',
-    color: '#9fb28a',
+    color: 'var(--green-soft)',
     dir: 'L',
     connector: LEG_USER.L,
     chip: { text: '"Three good options: …"', ...CHIP_USER, ...GREEN_OUT },

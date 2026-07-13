@@ -1,7 +1,7 @@
 .subAgent {
   margin-top: 6px;
-  background: #1a1d1d;
-  border: 1px solid #3a2d15;
+  background: var(--code-bg);
+  border: 1px solid var(--chip-accent-bg);
   border-radius: 10px;
   padding: 14px 16px;
   animation: popIn 0.3s ease-out;
@@ -21,8 +21,8 @@
 .subLoopItem {
   flex: 1;
   min-width: 150px;
-  background: #232827;
-  border: 1px solid #343838;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 8px;
   padding: 10px 12px;
   display: flex;
@@ -62,7 +62,7 @@
   gap: 10px;
 }
 .resource {
-  border: 1.5px solid #343838;
+  border: 1.5px solid var(--border);
   border-radius: 12px;
   padding: 11px 12px;
   transition: all 0.3s;
@@ -86,8 +86,8 @@
 }
 
 .todo {
-  background: #141616;
-  border: 1px solid #2c3030;
+  background: var(--inset-bg);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 16px 18px;
 }
@@ -118,6 +118,6 @@
 }
 .todoEmpty {
   font: 400 12.5px/1.6 var(--font-mono);
-  color: #5a5f5e;
+  color: var(--fg-dim);
   margin: 0;
 }

@@ -3,7 +3,7 @@
   gap: 6px;
   flex-wrap: wrap;
   margin: 24px 0 0;
-  border-bottom: 1px solid #2c3030;
+  border-bottom: 1px solid var(--border);
 }
 
 .tab {
@@ -14,9 +14,9 @@
   font-weight: 700;
   font-size: 13.5px;
   font-family: inherit;
-  background: #232827;
+  background: var(--surface);
   color: var(--fg-muted);
-  border: 1px solid #343838;
+  border: 1px solid var(--border);
   border-bottom: none;
   transform: translateY(1px);
   transition: all 0.2s;

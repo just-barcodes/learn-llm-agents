@@ -10,8 +10,8 @@
   }
 }
 .card {
-  background: #232827;
-  border: 1px solid #343838;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 20px 22px;
 }
@@ -39,8 +39,8 @@
   width: 56px;
   height: 56px;
   border-radius: 14px;
-  background: #2c3232;
-  border: 1.5px solid #4a4f4e;
+  background: var(--surface-raised);
+  border: 1.5px solid var(--node-idle-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -93,7 +93,11 @@
   top: calc(84% - 1.5px);
   width: 30%;
   height: 3px;
-  background-image: repeating-linear-gradient(90deg, #e8a04c 0 8px, transparent 8px 15px);
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--accent) 0 8px,
+    transparent 8px 15px
+  );
   animation: dashL 0.7s linear infinite;
 }
 .approveV {
@@ -103,7 +107,7 @@
   height: 44%;
   background-image: repeating-linear-gradient(
     180deg,
-    #e8a04c 0 8px,
+    var(--accent) 0 8px,
     transparent 8px 15px
   );
   animation: dashU 0.7s linear infinite;
@@ -116,7 +120,7 @@
   height: 0;
   border-left: 6.5px solid transparent;
   border-right: 6.5px solid transparent;
-  border-bottom: 11px solid #e8a04c;
+  border-bottom: 11px solid var(--accent);
 }
 .approveLabel {
   position: absolute;

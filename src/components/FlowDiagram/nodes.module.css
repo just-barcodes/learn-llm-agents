@@ -1,7 +1,7 @@
 .circle,
 .square {
-  background: #2c3232;
-  border: 1.5px solid #4a4f4e;
+  background: var(--surface-raised);
+  border: 1.5px solid var(--node-idle-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,8 +26,8 @@
   width: 42px;
   height: 42px;
   border-radius: 11px;
-  background: #181b1b;
-  border: 1.5px solid #4a4f4e;
+  background: var(--panel-bg);
+  border: 1.5px solid var(--node-idle-border);
   display: flex;
   align-items: center;
   justify-content: center;

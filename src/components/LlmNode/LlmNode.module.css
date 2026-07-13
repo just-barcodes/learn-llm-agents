@@ -1,7 +1,7 @@
 .node {
   flex: none;
   border-radius: 50%;
-  background: #2c3232;
+  background: var(--surface-raised);
   border: 1.5px solid var(--accent);
   display: flex;
   flex-direction: column;

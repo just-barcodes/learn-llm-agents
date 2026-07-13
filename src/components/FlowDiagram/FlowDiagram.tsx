@@ -227,7 +227,7 @@ export function FlowDiagram({
             onClick={() => setStep(i)}
             aria-current={i === step}
             style={{
-              borderColor: i === step ? s.color : '#3a3f3e',
+              borderColor: i === step ? s.color : 'var(--border)',
               color: i === step ? s.color : 'var(--fg-dim)',
               opacity: i === step ? 1 : 0.6,
             }}

@@ -15,8 +15,8 @@
 }
 
 .card {
-  background: #232827;
-  border: 1px solid #343838;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 18px 20px;
 }
@@ -34,8 +34,8 @@
 }
 
 .note {
-  background: #262b2a;
-  border: 1px solid #343838;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 18px 22px;
   margin-top: 22px;

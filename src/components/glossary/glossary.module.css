@@ -7,8 +7,8 @@
 .tooltip {
   position: fixed;
   max-width: 300px;
-  background: #f6f1e7;
-  color: #2e2a24;
+  background: var(--tooltip-bg);
+  color: var(--tooltip-fg);
   border-radius: 10px;
   padding: 12px 15px;
   font: 400 13px/1.6 var(--font-sans);

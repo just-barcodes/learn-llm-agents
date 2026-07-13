@@ -146,8 +146,8 @@ function OrchExtras(step: number) {
                   key={r.key}
                   className={styles.resource}
                   style={{
-                    borderColor: on ? cur.color : '#343838',
-                    background: on ? '#232827' : '#191d1d',
+                    borderColor: on ? cur.color : 'var(--border)',
+                    background: on ? 'var(--surface)' : 'var(--panel-bg)',
                     opacity: on ? 1 : 0.42,
                     transform: on ? 'scale(1.05)' : 'scale(1)',
                     boxShadow: on
@@ -186,7 +186,7 @@ function OrchExtras(step: number) {
                   <div key={t.key} className={styles.todoItem}>
                     <span
                       className={styles.todoBox}
-                      style={{ color: done ? 'var(--green-soft)' : '#5a5f5e' }}
+                      style={{ color: done ? 'var(--green-soft)' : 'var(--fg-dim)' }}
                     >
                       {done ? '☑' : '☐'}
                     </span>

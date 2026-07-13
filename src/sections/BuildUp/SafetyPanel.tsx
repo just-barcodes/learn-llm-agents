@@ -81,7 +81,7 @@ const nodes: FlowNode[] = [
           <div className={styles.action}>
             <div
               className={styles.actionBox}
-              style={{ borderColor: active ? color : '#4a4f4e' }}
+              style={{ borderColor: active ? color : 'var(--node-idle-border)' }}
             >
               <EnvelopeIcon size={26} />
             </div>

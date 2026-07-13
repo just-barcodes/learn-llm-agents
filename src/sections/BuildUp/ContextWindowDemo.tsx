@@ -21,23 +21,38 @@ interface KindStyle {
 }
 
 const KIND_STYLE: Record<BlockKind, KindStyle> = {
-  sys: { accent: '#e8a04c', bg: '#2a2318', tag: '#e8d9bd', text: '#d8cdb8' },
-  user: { accent: '#6a6f6e', bg: '#222726', tag: '#b8bcb2', text: '#cdd2c8' },
-  asst: { accent: '#7a8a5e', bg: '#1e2620', tag: '#cfe0bd', text: '#cfe0bd' },
+  sys: {
+    accent: 'var(--accent)',
+    bg: 'var(--chip-accent-bg)',
+    tag: 'var(--chip-accent-fg)',
+    text: 'var(--chip-accent-fg)',
+  },
+  user: {
+    accent: 'var(--border-strong)',
+    bg: 'var(--surface)',
+    tag: 'var(--fg-muted)',
+    text: 'var(--fg-muted)',
+  },
+  asst: {
+    accent: 'var(--green)',
+    bg: 'var(--chip-green-bg)',
+    tag: 'var(--chip-green-fg)',
+    text: 'var(--chip-green-fg)',
+  },
   think: {
-    accent: '#c98adf',
-    bg: '#241d2e',
-    tag: '#e6d5f2',
-    text: '#a88bc0',
+    accent: 'var(--purple)',
+    bg: 'var(--chip-violet-bg)',
+    tag: 'var(--chip-violet-fg)',
+    text: 'var(--chip-violet-fg)',
     italic: true,
   },
 };
 
 const DROPPED_STYLE: KindStyle = {
-  accent: '#c0654a',
-  bg: '#2a1717',
-  tag: '#c0654a',
-  text: '#8f6a63',
+  accent: 'var(--coral)',
+  bg: 'var(--chip-coral-bg)',
+  tag: 'var(--coral)',
+  text: 'var(--chip-coral-fg)',
 };
 
 const FLOW_CHIP: Record<BlockKind, string> = {
@@ -48,8 +63,8 @@ const FLOW_CHIP: Record<BlockKind, string> = {
 };
 
 function meterColor(pct: number, over: boolean): string {
-  if (over) return '#d98c6a';
-  return pct > 78 ? '#e8a04c' : '#7a8a5e';
+  if (over) return 'var(--coral)';
+  return pct > 78 ? 'var(--accent)' : 'var(--green)';
 }
 
 function ContextBlockRow({ block }: { block: DerivedBlock }) {
@@ -173,12 +188,14 @@ export function ContextWindowDemo() {
         <div className={styles.actor}>
           <div
             className={styles.you}
-            style={{ borderColor: kind === 'user' ? '#e8a04c' : '#4a4f4e' }}
+            style={{
+              borderColor: kind === 'user' ? 'var(--accent)' : 'var(--node-idle-border)',
+            }}
             aria-label="You"
           >
             <svg viewBox="0 0 24 24" width="54%" height="54%">
-              <circle cx="12" cy="8.4" r="4.1" fill="#d8cdb8" />
-              <path d="M4.4 20.5a7.6 7.6 0 0 1 15.2 0Z" fill="#d8cdb8" />
+              <circle cx="12" cy="8.4" r="4.1" fill="var(--icon-stroke)" />
+              <path d="M4.4 20.5a7.6 7.6 0 0 1 15.2 0Z" fill="var(--icon-stroke)" />
             </svg>
           </div>
           <div className={styles.actorLabel}>You</div>
@@ -228,13 +245,17 @@ export function ContextWindowDemo() {
         <div className={styles.actor}>
           <LlmNode
             size={60}
-            ring={isThink ? 'rgba(201,138,223,.45)' : 'rgba(232,160,76,0)'}
+            ring={
+              isThink
+                ? 'color-mix(in srgb, var(--purple) 45%, transparent)'
+                : 'transparent'
+            }
           />
           <div
             className={styles.scratch}
             style={{
-              color: isThink ? '#c98adf' : '#4a4f4e',
-              borderColor: isThink ? '#c98adf' : '#4a4f4e',
+              color: isThink ? 'var(--purple)' : 'var(--node-idle-border)',
+              borderColor: isThink ? 'var(--purple)' : 'var(--node-idle-border)',
               opacity: isThink ? 1 : 0.4,
             }}
           >

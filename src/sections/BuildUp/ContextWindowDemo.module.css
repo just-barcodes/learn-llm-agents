@@ -1,7 +1,7 @@
 .demo {
   position: relative;
-  background: #181b1b;
-  border: 1px solid #343838;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
   border-radius: 18px;
   padding: 22px 24px 20px;
   margin-bottom: 30px;
@@ -12,7 +12,7 @@
   inset: 0;
   z-index: 4;
   border-radius: 18px;
-  background: rgba(20, 22, 22, 0.5);
+  background: color-mix(in srgb, var(--bg) 55%, transparent);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   pointer-events: none;
@@ -44,8 +44,8 @@
 
 .modeToggle {
   display: inline-flex;
-  background: #141616;
-  border: 1px solid #343838;
+  background: var(--inset-bg);
+  border: 1px solid var(--border);
   border-radius: 10px;
   padding: 3px;
 }
@@ -74,7 +74,7 @@
   cursor: pointer;
   padding: 8px 16px;
   border-radius: 8px;
-  border: 1.5px solid #4a4f4e;
+  border: 1.5px solid var(--node-idle-border);
   font-weight: 600;
   font-size: 13px;
   font-family: inherit;
@@ -103,7 +103,7 @@
 }
 .step:disabled {
   cursor: default;
-  background: #2c3232;
+  background: var(--surface-raised);
   color: var(--fg-dim);
 }
 .stepCoach {
@@ -129,8 +129,8 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: #2c3232;
-  border: 1.5px solid #4a4f4e;
+  background: var(--surface-raised);
+  border: 1.5px solid var(--node-idle-border);
   transition: border-color 0.3s;
   display: flex;
   align-items: center;
@@ -234,9 +234,9 @@
   display: block;
   text-align: center;
   font: 500 10.5px var(--font-mono);
-  background: #141616;
+  background: var(--inset-bg);
   border: 1px solid var(--accent);
-  color: #d8cdb8;
+  color: var(--chip-neutral-fg);
   padding: 6px 10px;
   border-radius: 6px;
 }
@@ -245,7 +245,7 @@
   font: 600 9px var(--font-mono);
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  border: 1px dashed #4a4f4e;
+  border: 1px dashed var(--node-idle-border);
   border-radius: 6px;
   padding: 3px 7px;
   transition: all 0.3s;
@@ -255,11 +255,11 @@
 .caption {
   font-size: 15px;
   line-height: 1.6;
-  color: #f0e6d2;
+  color: var(--fg);
   font-weight: 600;
   margin: 0 0 16px;
   padding: 12px 16px;
-  background: rgba(232, 160, 76, 0.09);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
   border-left: 3px solid var(--accent);
   border-radius: 0 8px 8px 0;
 }
@@ -278,8 +278,8 @@
 .meterTrack {
   height: 10px;
   border-radius: 6px;
-  background: #141616;
-  border: 1px solid #2c3030;
+  background: var(--inset-bg);
+  border: 1px solid var(--border);
   overflow: hidden;
 }
 .meterFill {
@@ -327,7 +327,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #fff;
-  background: #c0392b;
+  background: var(--coral);
   border-radius: 7px;
   padding: 5px 12px;
   box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.28);

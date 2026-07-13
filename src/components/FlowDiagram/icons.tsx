@@ -1,6 +1,6 @@
 /** Line-art icons, matching the hand-drawn stroke style of the flow nodes. */
-const STROKE = '#cdd2c8';
-const FILL_BG = '#2c3232';
+const STROKE = 'var(--icon-stroke)';
+const FILL_BG = 'var(--node-bg)';
 
 function Svg({ size, children }: { size: number; children: React.ReactNode }) {
   return (
