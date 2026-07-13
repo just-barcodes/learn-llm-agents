@@ -73,6 +73,28 @@ export function LlmFlowNode({
   );
 }
 
+/** A small guardrail checkpoint node (input/output filter). */
+export function GuardNode({
+  emoji,
+  label,
+  active,
+  color,
+}: {
+  emoji: string;
+  label: string;
+  active: boolean;
+  color: string;
+}) {
+  return (
+    <>
+      <div className={styles.guard} style={{ borderColor: active ? color : IDLE_BORDER }}>
+        {emoji}
+      </div>
+      <div className={styles.guardLabel}>{label}</div>
+    </>
+  );
+}
+
 /** A rounded-square node showing an emoji and a label — tools, resources, etc. */
 export function EmojiNode({
   emoji,

@@ -5,6 +5,7 @@ import { ConversationPanel } from './ConversationPanel.tsx';
 import { ToolsPanel } from './ToolsPanel.tsx';
 import { RagPanel } from './RagPanel.tsx';
 import { OrchestrationPanel } from './OrchestrationPanel.tsx';
+import { SafetyPanel } from './SafetyPanel.tsx';
 import styles from './BuildUp.module.css';
 
 function Placeholder({ title }: { title: string }) {
@@ -21,11 +22,7 @@ const tabs: TabItem[] = [
   { id: 'tools', label: '2 · Simple agent (tools)', render: () => <ToolsPanel /> },
   { id: 'rag', label: '3 · Retrieval (RAG)', render: () => <RagPanel /> },
   { id: 'orch', label: '4 · Orchestration', render: () => <OrchestrationPanel /> },
-  {
-    id: 'safety',
-    label: '5 · Safety & limits',
-    render: () => <Placeholder title="When the model gets it wrong" />,
-  },
+  { id: 'safety', label: '5 · Safety & limits', render: () => <SafetyPanel /> },
   {
     id: 'proto',
     label: '6 · Protocols',

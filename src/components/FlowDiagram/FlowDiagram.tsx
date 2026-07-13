@@ -28,7 +28,8 @@ export interface FlowStep {
   label: string;
   color: string;
   dir: FlowDir;
-  connector: FlowConnector;
+  /** Omit for steps with no travelling connector (e.g. an in-place check). */
+  connector?: FlowConnector;
   chip: FlowChip;
   note: string;
   raw: string;
@@ -100,6 +101,8 @@ interface FlowDiagramProps {
   sceneHeight: number;
   /** Extra content rendered between the scene and the caption (e.g. a live TODO). */
   extras?: (step: number) => React.ReactNode;
+  /** Absolutely-positioned content rendered inside the scene (e.g. a verdict badge). */
+  overlay?: (step: number) => React.ReactNode;
 }
 
 /**
@@ -113,6 +116,7 @@ export function FlowDiagram({
   steps,
   sceneHeight,
   extras,
+  overlay,
 }: FlowDiagramProps) {
   const [step, setStep] = useState(0);
   const cur = steps[step];
@@ -150,23 +154,29 @@ export function FlowDiagram({
           );
         })}
 
-        <div
-          className={styles.connector}
-          style={{
-            left: cur.connector.left,
-            top: cur.connector.top,
-            width: cur.connector.width,
-            height: cur.connector.height,
-            backgroundImage: `repeating-linear-gradient(${cur.connector.angle}, ${cur.color} 0 8px, transparent 8px 15px)`,
-            animation: `${DASH_ANIM[cur.dir]} .7s linear infinite`,
-          }}
-        />
-        <Arrow
-          dir={cur.dir}
-          color={cur.color}
-          left={cur.connector.arrowLeft}
-          top={cur.connector.arrowTop}
-        />
+        {cur.connector && (
+          <>
+            <div
+              className={styles.connector}
+              style={{
+                left: cur.connector.left,
+                top: cur.connector.top,
+                width: cur.connector.width,
+                height: cur.connector.height,
+                backgroundImage: `repeating-linear-gradient(${cur.connector.angle}, ${cur.color} 0 8px, transparent 8px 15px)`,
+                animation: `${DASH_ANIM[cur.dir]} .7s linear infinite`,
+              }}
+            />
+            <Arrow
+              dir={cur.dir}
+              color={cur.color}
+              left={cur.connector.arrowLeft}
+              top={cur.connector.arrowTop}
+            />
+          </>
+        )}
+
+        {overlay?.(step)}
 
         <div
           key={step}
