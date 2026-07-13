@@ -38,9 +38,9 @@
   margin: 0 0 26px;
 }
 .eyebrow {
-  font: 600 10px var(--font-mono);
-  letter-spacing: 0.12em;
+  font: 700 15px var(--font-mono);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--fg-dim);
-  margin: 0 0 10px;
+  color: var(--accent);
+  margin: 0 0 12px;
 }
