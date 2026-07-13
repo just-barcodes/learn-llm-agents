@@ -2,20 +2,19 @@ import type { FlowStep } from '../../components/FlowDiagram/FlowDiagram.tsx';
 import { CHIP_AT, CHIP_COLOR, LEG } from './flowLegs.ts';
 
 export interface ToolExample {
-  icon: string;
   name: string;
   desc: string;
 }
 
 export const TOOL_EXAMPLES: ToolExample[] = [
-  { icon: '🌐', name: 'Web search', desc: 'look something up online right now' },
-  { icon: '🗄️', name: 'Database query', desc: 'read live records, orders, prices' },
-  { icon: '💻', name: 'Run code', desc: 'do math, parse a file, make a chart' },
-  { icon: '📧', name: 'Send email', desc: 'or a Slack message, or a calendar invite' },
-  { icon: '📄', name: 'Read a file', desc: 'open a PDF or spreadsheet you gave it' },
-  { icon: '🛠️', name: 'Call an API', desc: 'book a room, pay, file a ticket' },
-  { icon: '🧮', name: 'Calculator', desc: "exact arithmetic it shouldn't guess" },
-  { icon: '🤖', name: 'Another agent', desc: 'hand a sub-task to a specialist' },
+  { name: 'Web search', desc: 'look something up online right now' },
+  { name: 'Database query', desc: 'read live records, orders, prices' },
+  { name: 'Run code', desc: 'do math, parse a file, make a chart' },
+  { name: 'Send email', desc: 'or a Slack message, or a calendar invite' },
+  { name: 'Read a file', desc: 'open a PDF or spreadsheet you gave it' },
+  { name: 'Call an API', desc: 'book a room, pay, file a ticket' },
+  { name: 'Calculator', desc: "exact arithmetic it shouldn't guess" },
+  { name: 'Another agent', desc: 'hand a sub-task to a specialist' },
 ];
 
 const LEG_USER = { R: LEG.userR, L: LEG.userL };
@@ -34,7 +33,7 @@ export const TOOL_STEPS: FlowStep[] = [
     color: '#b8bcb2',
     dir: 'R',
     connector: LEG_USER.R,
-    chip: { text: '✉️ "Find hotels in Basel"', ...CHIP_USER, ...GREY },
+    chip: { text: '"Find hotels in Basel"', ...CHIP_USER, ...GREY },
     raw: '{ "role": "user",\n  "content": "Find hotels in Basel" }',
     note: 'Your plain-language message arrives at the harness as ordinary text. No format, no special syntax, just what you typed.',
     highlight: ['user', 'harness'],
@@ -107,7 +106,7 @@ export const TOOL_STEPS: FlowStep[] = [
     dir: 'L',
     connector: LEG_LLM.L,
     chip: {
-      text: '✉️ "Three good options: …" · again, just text',
+      text: '"Three good options: …" · again, just text',
       ...CHIP_LLM,
       ...GREEN_OUT,
     },
@@ -120,7 +119,7 @@ export const TOOL_STEPS: FlowStep[] = [
     color: '#9fb28a',
     dir: 'L',
     connector: LEG_USER.L,
-    chip: { text: '✉️ "Three good options: …"', ...CHIP_USER, ...GREEN_OUT },
+    chip: { text: '"Three good options: …"', ...CHIP_USER, ...GREEN_OUT },
     raw: 'Three good options in Basel: …',
     note: 'The harness strips away all the machinery and shows you only the final, human-readable reply, as if it had known the answer all along.',
     highlight: ['user', 'harness'],

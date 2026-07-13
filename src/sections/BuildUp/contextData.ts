@@ -11,7 +11,7 @@ export interface ContextBlock {
 export const CONTEXT_PLAIN: ContextBlock[] = [
   {
     kind: 'sys',
-    tag: '⚙ System prompt',
+    tag: 'System prompt',
     tok: 300,
     text: '"You are a concise travel helper. Prefer trains and ferries, be brief."',
   },
@@ -42,7 +42,7 @@ export const CONTEXT_PLAIN: ContextBlock[] = [
 export const CONTEXT_THINKING: ContextBlock[] = [
   {
     kind: 'sys',
-    tag: '⚙ System prompt',
+    tag: 'System prompt',
     tok: 300,
     text: '"You are a concise travel helper. Prefer trains and ferries, be brief."',
   },

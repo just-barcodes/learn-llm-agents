@@ -75,12 +75,12 @@ export function LlmFlowNode({
 
 /** A small guardrail checkpoint node (input/output filter). */
 export function GuardNode({
-  emoji,
+  icon,
   label,
   active,
   color,
 }: {
-  emoji: string;
+  icon: React.ReactNode;
   label: string;
   active: boolean;
   color: string;
@@ -88,22 +88,22 @@ export function GuardNode({
   return (
     <>
       <div className={styles.guard} style={{ borderColor: active ? color : IDLE_BORDER }}>
-        {emoji}
+        {icon}
       </div>
       <div className={styles.guardLabel}>{label}</div>
     </>
   );
 }
 
-/** A rounded-square node showing an emoji and a label — tools, resources, etc. */
-export function EmojiNode({
-  emoji,
+/** A rounded-square node showing an icon and a label — tools, resources, etc. */
+export function IconNode({
+  icon,
   label,
   active,
   color,
   size = 56,
 }: {
-  emoji: string;
+  icon: React.ReactNode;
   label: string;
   active: boolean;
   color: string;
@@ -117,11 +117,10 @@ export function EmojiNode({
           width: size,
           height: size,
           borderRadius: 16,
-          fontSize: 24,
           borderColor: active ? color : IDLE_BORDER,
         }}
       >
-        {emoji}
+        {icon}
       </div>
       <NodeLabel label={label} />
     </>

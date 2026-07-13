@@ -1,4 +1,10 @@
 import { Term } from '../../components/glossary/Term.tsx';
+import {
+  BrainIcon,
+  InlineIcon,
+  ScrollIcon,
+  WindowIcon,
+} from '../../components/FlowDiagram/icons.tsx';
 import text from '../../styles/text.module.css';
 import { ContextWindowDemo } from './ContextWindowDemo.tsx';
 import styles from './ConversationPanel.module.css';
@@ -17,7 +23,12 @@ export function ConversationPanel() {
 
       <div className={styles.cards}>
         <div className={styles.card}>
-          <div className={styles.cardTitle}>📜 The system prompt</div>
+          <div className={styles.cardTitle}>
+            <InlineIcon>
+              <ScrollIcon size={17} />
+            </InlineIcon>
+            The system prompt
+          </div>
           <p className={styles.cardBody}>
             The builder’s standing instructions, silently pinned to the top of every
             message: who the assistant is, what its job is, the rules it follows, the tone
@@ -26,7 +37,12 @@ export function ConversationPanel() {
           </p>
         </div>
         <div className={styles.card}>
-          <div className={styles.cardTitle}>🪟 The context</div>
+          <div className={styles.cardTitle}>
+            <InlineIcon>
+              <WindowIcon size={17} />
+            </InlineIcon>
+            The context
+          </div>
           <p className={styles.cardBody}>
             Everything the model can see at once: the system prompt plus the whole
             conversation so far. The model is stateless, so this entire context is re-sent
@@ -47,11 +63,15 @@ export function ConversationPanel() {
       <ContextWindowDemo />
 
       <div className={styles.note}>
+        <div className={styles.noteTitle}>
+          <InlineIcon>
+            <BrainIcon size={17} />
+          </InlineIcon>
+          A thinking model?
+        </div>
         <p>
-          <b>
-            “Thinking” just means the model writes more of its own text to itself before
-            it commits to an answer. Either way, the model returns text.
-          </b>
+          “Thinking” just means the model writes more of its own text to itself before it
+          commits to an answer. Either way, the model returns text.
         </p>
         <p>
           That is why, from here on, it barely matters whether the model is a “thinking”

@@ -1,14 +1,38 @@
+import type { ReactNode } from 'react';
 import { Term } from '../../components/glossary/Term.tsx';
 import { FlowDiagram, type FlowNode } from '../../components/FlowDiagram/FlowDiagram.tsx';
 import {
-  EmojiNode,
   HarnessNode,
+  IconNode,
   LlmFlowNode,
   UserNode,
 } from '../../components/FlowDiagram/nodes.tsx';
+import {
+  CalculatorIcon,
+  CodeIcon,
+  DatabaseIcon,
+  DocumentIcon,
+  EnvelopeIcon,
+  GlobeIcon,
+  InlineIcon,
+  PeopleIcon,
+  RobotIcon,
+  WrenchIcon,
+} from '../../components/FlowDiagram/icons.tsx';
 import text from '../../styles/text.module.css';
 import { TOOL_EXAMPLES, TOOL_STEPS } from './toolsData.ts';
 import styles from './ToolsPanel.module.css';
+
+const TOOL_ICONS: Record<string, ReactNode> = {
+  'Web search': <GlobeIcon size={20} />,
+  'Database query': <DatabaseIcon size={20} />,
+  'Run code': <CodeIcon size={20} />,
+  'Send email': <EnvelopeIcon size={20} />,
+  'Read a file': <DocumentIcon size={20} />,
+  'Call an API': <WrenchIcon size={20} />,
+  Calculator: <CalculatorIcon size={20} />,
+  'Another agent': <RobotIcon size={20} />,
+};
 
 const nodes: FlowNode[] = [
   {
@@ -34,7 +58,12 @@ const nodes: FlowNode[] = [
     left: '38%',
     top: '84%',
     render: (active, color) => (
-      <EmojiNode emoji="🌐" label="Web search" active={active} color={color} />
+      <IconNode
+        icon={<GlobeIcon />}
+        label="Web search"
+        active={active}
+        color={color}
+      />
     ),
   },
 ];
@@ -55,7 +84,7 @@ export function ToolsPanel() {
       <div className={styles.examples}>
         {TOOL_EXAMPLES.map((t) => (
           <div key={t.name} className={styles.example}>
-            <div className={styles.exampleIcon}>{t.icon}</div>
+            <div className={styles.exampleIcon}>{TOOL_ICONS[t.name]}</div>
             <div className={styles.exampleName}>{t.name}</div>
             <div className={styles.exampleDesc}>{t.desc}</div>
           </div>
@@ -71,14 +100,26 @@ export function ToolsPanel() {
       </p>
 
       <FlowDiagram
-        title="🔧 Our first agent that can use a tool"
+        title={
+          <>
+            <InlineIcon>
+              <WrenchIcon size={16} />
+            </InlineIcon>
+            Our first agent that can use a tool
+          </>
+        }
         nodes={nodes}
         steps={TOOL_STEPS}
         sceneHeight={235}
       />
 
       <div className={styles.aside}>
-        <div className={styles.asideTitle}>📮 “But I’ve never set up a harness…”</div>
+        <div className={styles.asideTitle}>
+          <InlineIcon>
+            <EnvelopeIcon size={16} />
+          </InlineIcon>
+          “But I’ve never set up a harness…”
+        </div>
         <p>
           You don’t have to. When you use ChatGPT or the Claude app,{' '}
           <b>that product is the harness.</b> The chat website, its servers, and its
@@ -90,7 +131,12 @@ export function ToolsPanel() {
       </div>
 
       <div className={styles.aside}>
-        <div className={styles.asideTitle}>👥 A tool can even be another agent</div>
+        <div className={styles.asideTitle}>
+          <InlineIcon>
+            <PeopleIcon size={16} />
+          </InlineIcon>
+          A tool can even be another agent
+        </div>
         <p>
           Because a tool is just “something the harness runs and returns text from,” a
           whole other agent can be wrapped as one tool. A research agent might list “ask

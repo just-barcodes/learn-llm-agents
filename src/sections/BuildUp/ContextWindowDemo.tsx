@@ -1,5 +1,10 @@
 import { useState } from 'react';
 import { Term } from '../../components/glossary/Term.tsx';
+import {
+  GearIcon,
+  InlineIcon,
+  ThoughtIcon,
+} from '../../components/FlowDiagram/icons.tsx';
 import { LlmNode } from '../../components/LlmNode/LlmNode.tsx';
 import { useInViewOnce } from '../../hooks/useInViewOnce.ts';
 import { useContextWindow } from './useContextWindow.ts';
@@ -36,9 +41,9 @@ const DROPPED_STYLE: KindStyle = {
 };
 
 const FLOW_CHIP: Record<BlockKind, string> = {
-  sys: '⚙ system prompt loaded',
+  sys: 'system prompt loaded',
   user: '',
-  think: '💭 reasoning privately…',
+  think: 'reasoning privately…',
   asst: '',
 };
 
@@ -70,6 +75,11 @@ function ContextBlockRow({ block }: { block: DerivedBlock }) {
     >
       <div className={styles.blockHead}>
         <span className={styles.blockTag} style={{ color: s.tag }}>
+          {block.kind === 'sys' && (
+            <InlineIcon>
+              <GearIcon size={13} />
+            </InlineIcon>
+          )}
           {block.tag}
         </span>
         <div className={styles.blockMeta}>
@@ -111,6 +121,12 @@ export function ContextWindowDemo() {
   const chip =
     kind === 'user' || kind === 'asst' ? ctx.blocks.at(-1)?.text : FLOW_CHIP[kind];
   const isThink = kind === 'think';
+  const chipIcon =
+    kind === 'sys' ? (
+      <GearIcon size={13} />
+    ) : kind === 'think' ? (
+      <ThoughtIcon size={13} />
+    ) : null;
 
   return (
     <div className={styles.demo} ref={demoRef}>
@@ -202,6 +218,7 @@ export function ContextWindowDemo() {
           {chip && (
             <div className={isThink ? `${styles.chip} ${styles.chipMid}` : styles.chip}>
               <span className={styles.chipText} style={{ borderColor: accent }}>
+                {chipIcon && <InlineIcon>{chipIcon}</InlineIcon>}
                 {chip}
               </span>
             </div>
@@ -221,7 +238,10 @@ export function ContextWindowDemo() {
               opacity: isThink ? 1 : 0.4,
             }}
           >
-            💭 scratchpad
+            <InlineIcon>
+              <ThoughtIcon size={13} />
+            </InlineIcon>
+            scratchpad
           </div>
         </div>
       </div>

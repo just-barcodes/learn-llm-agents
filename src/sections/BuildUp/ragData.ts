@@ -2,24 +2,20 @@ import type { FlowStep } from '../../components/FlowDiagram/FlowDiagram.tsx';
 import { CHIP_AT, CHIP_COLOR, LEG, LINE } from './flowLegs.ts';
 
 export interface RagReason {
-  icon: string;
   name: string;
   desc: string;
 }
 
 export const RAG_REASONS: RagReason[] = [
   {
-    icon: '🏢',
     name: 'Private knowledge',
     desc: 'your wikis, contracts, tickets, the model never saw them',
   },
   {
-    icon: '🗓️',
     name: 'Fresh & changing',
     desc: "today's prices, this week's policy, no retraining needed",
   },
   {
-    icon: '🔗',
     name: 'Grounded answers',
     desc: 'replies can quote and cite real passages, not guesses',
   },
@@ -32,7 +28,7 @@ export const RAG_STEPS: FlowStep[] = [
     dir: 'R',
     connector: LEG.userR,
     chip: {
-      text: '✉️ "What is our refund policy?"',
+      text: '"What is our refund policy?"',
       ...CHIP_AT.user,
       ...CHIP_COLOR.grey,
     },
@@ -98,7 +94,7 @@ export const RAG_STEPS: FlowStep[] = [
     dir: 'L',
     connector: LEG.llmL,
     chip: {
-      text: '✉️ "You can return items within 30 days…"',
+      text: '"You can return items within 30 days…"',
       ...CHIP_AT.llm,
       ...CHIP_COLOR.greenOut,
     },
@@ -112,7 +108,7 @@ export const RAG_STEPS: FlowStep[] = [
     dir: 'L',
     connector: LEG.userL,
     chip: {
-      text: '✉️ "You can return items within 30 days…"',
+      text: '"You can return items within 30 days…"',
       ...CHIP_AT.user,
       ...CHIP_COLOR.greenOut,
     },

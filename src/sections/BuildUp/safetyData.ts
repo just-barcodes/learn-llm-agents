@@ -67,7 +67,7 @@ export const SAFE_STEPS: SafeStep[] = [
     dir: 'R',
     connector: OUT.R,
     chip: {
-      text: '✉️ "Email all 40k customers a 90%-off coupon"',
+      text: '"Email all 40k customers a 90%-off coupon"',
       left: '23%',
       top: '10%',
       bg: '#343838',
@@ -84,7 +84,7 @@ export const SAFE_STEPS: SafeStep[] = [
     color: '#9fb28a',
     dir: 'R',
     chip: {
-      text: '🛡 scanning the prompt…',
+      text: 'scanning the prompt…',
       left: '23%',
       top: '10%',
       bg: '#1e2620',
@@ -126,7 +126,7 @@ export const SAFE_STEPS: SafeStep[] = [
     dir: 'L',
     connector: LLMC.L,
     chip: {
-      text: '🔎 scanning the response…',
+      text: 'scanning the response…',
       left: '55%',
       top: '10%',
       bg: '#2e211c',
@@ -150,7 +150,7 @@ export const SAFE_STEPS: SafeStep[] = [
     dir: 'D',
     connector: RES_D,
     chip: {
-      text: '📧 send_email(40,000 recipients)',
+      text: 'send_email(40,000 recipients)',
       left: '58%',
       top: '61%',
       bg: '#3a2d15',
@@ -199,7 +199,7 @@ export const SAFE_STEPS: SafeStep[] = [
     dir: 'L',
     connector: OUT.L,
     chip: {
-      text: '✉️ "Done — coupon emailed to all 40,000 customers."',
+      text: '"Done — coupon emailed to all 40,000 customers."',
       left: '23%',
       top: '10%',
       bg: '#3d4a35',

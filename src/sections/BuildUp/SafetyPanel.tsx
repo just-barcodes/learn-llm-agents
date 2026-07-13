@@ -6,6 +6,16 @@ import {
   LlmFlowNode,
   UserNode,
 } from '../../components/FlowDiagram/nodes.tsx';
+import {
+  BarrierIcon,
+  EnvelopeIcon,
+  GhostIcon,
+  InlineIcon,
+  ScalesIcon,
+  SearchIcon,
+  ShieldIcon,
+  TrafficLightIcon,
+} from '../../components/FlowDiagram/icons.tsx';
 import text from '../../styles/text.module.css';
 import panel from './ToolsPanel.module.css';
 import { SAFE_STEPS } from './safetyData.ts';
@@ -23,7 +33,12 @@ const nodes: FlowNode[] = [
     left: '23%',
     top: '34%',
     render: (active, color) => (
-      <GuardNode emoji="🛡️" label="input guard" active={active} color={color} />
+      <GuardNode
+        icon={<ShieldIcon size={22} />}
+        label="input guard"
+        active={active}
+        color={color}
+      />
     ),
   },
   {
@@ -39,7 +54,12 @@ const nodes: FlowNode[] = [
     left: '55%',
     top: '34%',
     render: (active, color) => (
-      <GuardNode emoji="🔎" label="output guard" active={active} color={color} />
+      <GuardNode
+        icon={<SearchIcon size={22} />}
+        label="output guard"
+        active={active}
+        color={color}
+      />
     ),
   },
   {
@@ -63,7 +83,7 @@ const nodes: FlowNode[] = [
               className={styles.actionBox}
               style={{ borderColor: active ? color : '#4a4f4e' }}
             >
-              📧
+              <EnvelopeIcon size={26} />
             </div>
             {human && (
               <span className={styles.actionBadge}>
@@ -126,7 +146,12 @@ export function SafetyPanel() {
 
       <div className={styles.cards}>
         <div className={styles.card}>
-          <div className={styles.cardTitle}>🜁 Hallucination</div>
+          <div className={styles.cardTitle}>
+            <InlineIcon>
+              <GhostIcon size={17} />
+            </InlineIcon>
+            Hallucination
+          </div>
           <p className={styles.cardBody}>
             The model writes something fluent, plausible, and simply false, an invented
             citation, a wrong date, an API that never existed. It isn’t lying; it has no
@@ -135,7 +160,12 @@ export function SafetyPanel() {
           </p>
         </div>
         <div className={styles.card}>
-          <div className={styles.cardTitle}>🚧 Guardrails</div>
+          <div className={styles.cardTitle}>
+            <InlineIcon>
+              <BarrierIcon size={17} />
+            </InlineIcon>
+            Guardrails
+          </div>
           <p className={styles.cardBody}>
             The rules of the building: what the agent may never do, which actions need a
             human’s sign-off, and what gets filtered on the way in and out. They live in
@@ -146,7 +176,14 @@ export function SafetyPanel() {
       </div>
 
       <FlowDiagram
-        title="🚦 Guardrails in the loop"
+        title={
+          <>
+            <InlineIcon>
+              <TrafficLightIcon size={16} />
+            </InlineIcon>
+            Guardrails in the loop
+          </>
+        }
         nodes={nodes}
         steps={SAFE_STEPS}
         sceneHeight={250}
@@ -154,7 +191,12 @@ export function SafetyPanel() {
       />
 
       <div className={panel.aside} style={{ marginTop: 26 }}>
-        <div className={panel.asideTitle}>⚖️ The trade-off</div>
+        <div className={panel.asideTitle}>
+          <InlineIcon>
+            <ScalesIcon size={16} />
+          </InlineIcon>
+          The trade-off
+        </div>
         <p>
           Every guardrail costs a little capability, and every bit of freedom adds a
           little risk. The craft of building an agent is deciding, for a certain task, how

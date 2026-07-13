@@ -40,6 +40,12 @@
   padding: 18px 22px;
   margin-top: 22px;
 }
+.noteTitle {
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 8px;
+  color: var(--green-soft);
+}
 .note p {
   font-size: 14px;
   line-height: 1.7;

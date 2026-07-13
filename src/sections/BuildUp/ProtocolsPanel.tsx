@@ -1,8 +1,25 @@
+import type { ReactNode } from 'react';
 import { Term } from '../../components/glossary/Term.tsx';
+import {
+  CompassIcon,
+  GlobeIcon,
+  IdCardIcon,
+  InlineIcon,
+  PeersIcon,
+  PlugIcon,
+  PuzzleIcon,
+  WarningIcon,
+} from '../../components/FlowDiagram/icons.tsx';
 import text from '../../styles/text.module.css';
 import panel from './ToolsPanel.module.css';
 import { RELATED_STANDARDS } from './protocolsData.ts';
 import styles from './ProtocolsPanel.module.css';
+
+const STANDARD_ICONS: Record<string, ReactNode> = {
+  'Tool / function-calling schemas': <PuzzleIcon size={20} />,
+  OpenAPI: <GlobeIcon size={20} />,
+  'Agent Cards': <IdCardIcon size={20} />,
+};
 
 /** Tab 6 — the open protocols (MCP, A2A) that let agents plug into everything. */
 export function ProtocolsPanel() {
@@ -18,7 +35,10 @@ export function ProtocolsPanel() {
       <div className={styles.protocols}>
         <div className={styles.protocol}>
           <div className={styles.protocolTitle} style={{ color: 'var(--accent)' }}>
-            🔌 <Term term="mcp">MCP</Term> · agent ↔ tools
+            <InlineIcon>
+              <PlugIcon size={16} />
+            </InlineIcon>
+            <Term term="mcp">MCP</Term> · agent ↔ tools
           </div>
           <div className={styles.protocolMeta}>
             Model Context Protocol · Anthropic, 2024
@@ -37,7 +57,10 @@ export function ProtocolsPanel() {
 
         <div className={styles.protocol}>
           <div className={styles.protocolTitle} style={{ color: 'var(--purple)' }}>
-            🤝 <Term term="a2a">A2A</Term> · agent ↔ agent
+            <InlineIcon>
+              <PeersIcon size={16} />
+            </InlineIcon>
+            <Term term="a2a">A2A</Term> · agent ↔ agent
           </div>
           <div className={styles.protocolMeta}>Agent2Agent · Google, 2025</div>
           <p className={styles.protocolBody}>
@@ -53,7 +76,12 @@ export function ProtocolsPanel() {
       </div>
 
       <div className={panel.aside} style={{ marginTop: 0, marginBottom: 26 }}>
-        <div className={panel.asideTitle}>🧭 One line to remember them by</div>
+        <div className={panel.asideTitle}>
+          <InlineIcon>
+            <CompassIcon size={16} />
+          </InlineIcon>
+          One line to remember them by
+        </div>
         <p>
           <b>MCP</b> connects an agent <em>down</em> to its tools and data; <b>A2A</b>{' '}
           connects an agent <em>across</em> to other agents. They are complementary, a
@@ -65,7 +93,7 @@ export function ProtocolsPanel() {
       <div className={styles.related}>
         {RELATED_STANDARDS.map((s) => (
           <div key={s.name} className={panel.example}>
-            <div className={panel.exampleIcon}>{s.icon}</div>
+            <div className={panel.exampleIcon}>{STANDARD_ICONS[s.name]}</div>
             <div className={panel.exampleName}>{s.name}</div>
             <div className={panel.exampleDesc}>{s.desc}</div>
           </div>
@@ -74,7 +102,10 @@ export function ProtocolsPanel() {
 
       <div className={panel.aside} style={{ marginTop: 0 }}>
         <div className={panel.asideTitle} style={{ color: 'var(--accent)' }}>
-          ⚠️ Still early days
+          <InlineIcon>
+            <WarningIcon size={16} />
+          </InlineIcon>
+          Still early days
         </div>
         <p>
           These protocols are young and moving fast, adoption, security models, and even

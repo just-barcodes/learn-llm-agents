@@ -1,14 +1,31 @@
+import type { ReactNode } from 'react';
 import { Term } from '../../components/glossary/Term.tsx';
 import { FlowDiagram, type FlowNode } from '../../components/FlowDiagram/FlowDiagram.tsx';
 import {
-  EmojiNode,
   HarnessNode,
+  IconNode,
   LlmFlowNode,
   UserNode,
 } from '../../components/FlowDiagram/nodes.tsx';
+import {
+  BookIcon,
+  BuildingIcon,
+  CalendarIcon,
+  FolderIcon,
+  InlineIcon,
+  LinkIcon,
+  SearchIcon,
+  WrenchIcon,
+} from '../../components/FlowDiagram/icons.tsx';
 import text from '../../styles/text.module.css';
 import { RAG_REASONS, RAG_STEPS } from './ragData.ts';
 import styles from './ToolsPanel.module.css';
+
+const REASON_ICONS: Record<string, ReactNode> = {
+  'Private knowledge': <BuildingIcon size={20} />,
+  'Fresh & changing': <CalendarIcon size={20} />,
+  'Grounded answers': <LinkIcon size={20} />,
+};
 
 const nodes: FlowNode[] = [
   {
@@ -34,7 +51,12 @@ const nodes: FlowNode[] = [
     left: '38%',
     top: '84%',
     render: (active, color) => (
-      <EmojiNode emoji="📚" label="Knowledge base" active={active} color={color} />
+      <IconNode
+        icon={<BookIcon />}
+        label="Knowledge base"
+        active={active}
+        color={color}
+      />
     ),
   },
 ];
@@ -57,7 +79,7 @@ export function RagPanel() {
       <div className={styles.examples}>
         {RAG_REASONS.map((r) => (
           <div key={r.name} className={styles.example}>
-            <div className={styles.exampleIcon}>{r.icon}</div>
+            <div className={styles.exampleIcon}>{REASON_ICONS[r.name]}</div>
             <div className={styles.exampleName}>{r.name}</div>
             <div className={styles.exampleDesc}>{r.desc}</div>
           </div>
@@ -72,14 +94,26 @@ export function RagPanel() {
       </p>
 
       <FlowDiagram
-        title="🔎 Anatomy of a retrieval"
+        title={
+          <>
+            <InlineIcon>
+              <SearchIcon size={16} />
+            </InlineIcon>
+            Anatomy of a retrieval
+          </>
+        }
         nodes={nodes}
         steps={RAG_STEPS}
         sceneHeight={235}
       />
 
       <div className={styles.aside}>
-        <div className={styles.asideTitle}>🔧 Isn’t this just a tool?</div>
+        <div className={styles.asideTitle}>
+          <InlineIcon>
+            <WrenchIcon size={16} />
+          </InlineIcon>
+          Isn’t this just a tool?
+        </div>
         <p>
           Good eye, the shape is identical: the harness fetches something and folds it
           into the prompt. The difference is who decides. In classic RAG the harness{' '}
@@ -90,7 +124,12 @@ export function RagPanel() {
       </div>
 
       <div className={styles.aside}>
-        <div className={styles.asideTitle}>🗂 Why a vector store?</div>
+        <div className={styles.asideTitle}>
+          <InlineIcon>
+            <FolderIcon size={16} />
+          </InlineIcon>
+          Why a vector store?
+        </div>
         <p>
           It doesn’t have to be. A plain keyword search for “refund policy” misses a
           passage that says “returns accepted within 30 days.” Embeddings turn text into

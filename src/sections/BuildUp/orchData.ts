@@ -3,7 +3,6 @@ import { CHIP_COLOR, LINE } from './flowLegs.ts';
 
 export interface OrchResource {
   key: string;
-  icon: string;
   name: string;
   desc: string;
 }
@@ -13,15 +12,14 @@ export interface OrchTodo {
 }
 
 export const ORCH_RESOURCES: OrchResource[] = [
-  { key: 'kb', icon: '📚', name: 'Knowledge base', desc: 'your own docs, via RAG' },
-  { key: 'web', icon: '🌐', name: 'Web search', desc: 'live news on the rival' },
+  { key: 'kb', name: 'Knowledge base', desc: 'your own docs, via RAG' },
+  { key: 'web', name: 'Web search', desc: 'live news on the rival' },
   {
     key: 'agent',
-    icon: '🤖',
     name: 'Research sub-agent',
     desc: 'its own think–act loop',
   },
-  { key: 'email', icon: '📧', name: 'Send email', desc: 'deliver the final brief' },
+  { key: 'email', name: 'Send email', desc: 'deliver the final brief' },
 ];
 
 export const ORCH_TODO: OrchTodo[] = [
@@ -33,9 +31,9 @@ export const ORCH_TODO: OrchTodo[] = [
 ];
 
 export const SUB_LOOP = [
-  { icon: '💭', text: 'think: where does Rival Co make money?' },
-  { icon: '🔧', text: 'act: web_search + read filings' },
-  { icon: '👀', text: 'observe: premium pricing, weak self-serve' },
+  { text: 'think: where does Rival Co make money?' },
+  { text: 'act: web_search + read filings' },
+  { text: 'observe: premium pricing, weak self-serve' },
 ];
 
 // Connectors for the 30%-row layout (You 8%, Harness 38%, Orchestrator 72%,
@@ -118,7 +116,7 @@ export const ORCH_STEPS: OrchStep[] = [
     dir: 'R',
     connector: OUT.R,
     chip: {
-      text: '✉️ "Draft a brief on Rival Co & email the team"',
+      text: '"Draft a brief on Rival Co & email the team"',
       ...CHIP_OUT,
       ...CHIP_COLOR.grey,
       wrap: true,
@@ -135,7 +133,7 @@ export const ORCH_STEPS: OrchStep[] = [
     dir: 'R',
     connector: LLMC.R,
     chip: {
-      text: '☑️ writes itself a to-do list',
+      text: 'writes itself a to-do list',
       ...CHIP_LLM,
       ...CHIP_COLOR.amber,
       wrap: true,
@@ -152,7 +150,7 @@ export const ORCH_STEPS: OrchStep[] = [
     dir: 'D',
     connector: RES.D,
     chip: {
-      text: '📚 retrieve our positioning passages',
+      text: 'retrieve our positioning passages',
       ...CHIP_RES,
       ...CHIP_COLOR.purple,
       wrap: true,
@@ -169,7 +167,7 @@ export const ORCH_STEPS: OrchStep[] = [
     dir: 'D',
     connector: RES.D,
     chip: {
-      text: '🌐 web_search("Rival Co news 2026")',
+      text: 'web_search("Rival Co news 2026")',
       ...CHIP_RES,
       ...CHIP_COLOR.green,
       wrap: true,
@@ -186,7 +184,7 @@ export const ORCH_STEPS: OrchStep[] = [
     dir: 'D',
     connector: RES.D,
     chip: {
-      text: '🤖 spins up a research sub-agent',
+      text: 'spins up a research sub-agent',
       ...CHIP_RES,
       ...CHIP_COLOR.amber,
       wrap: true,
@@ -203,7 +201,7 @@ export const ORCH_STEPS: OrchStep[] = [
     dir: 'U',
     connector: RES.U,
     chip: {
-      text: '✉️ hands back a tight summary',
+      text: 'hands back a tight summary',
       ...CHIP_RES,
       ...CHIP_COLOR.greenOut,
       wrap: true,
@@ -220,7 +218,7 @@ export const ORCH_STEPS: OrchStep[] = [
     dir: 'D',
     connector: RES.D,
     chip: {
-      text: '📧 send_email(team, brief)',
+      text: 'send_email(team, brief)',
       ...CHIP_RES,
       ...CHIP_COLOR.green,
       wrap: true,
@@ -237,7 +235,7 @@ export const ORCH_STEPS: OrchStep[] = [
     dir: 'L',
     connector: OUT.L,
     chip: {
-      text: '✉️ "Done — brief sent to the team."',
+      text: '"Done — brief sent to the team."',
       ...CHIP_OUT,
       ...CHIP_COLOR.greenOut,
       wrap: true,
