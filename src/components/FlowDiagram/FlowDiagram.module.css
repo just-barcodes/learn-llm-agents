@@ -78,6 +78,12 @@
   animation: chipPop 0.35s ease-out;
   z-index: 2;
 }
+/* On vertical-connector steps the chip is anchored by its left edge beside the
+   line, so it only centres vertically and reads left-to-right. */
+.chipVertical {
+  transform: translateY(-50%);
+  max-width: 46%;
+}
 .chipText {
   font: 500 11.5px var(--font-mono);
   border: 1px solid;
@@ -91,6 +97,9 @@
   white-space: normal;
   text-align: center;
   line-height: 1.4;
+}
+.chipVertical .chipWrap {
+  text-align: left;
 }
 
 .note {

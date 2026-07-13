@@ -51,6 +51,10 @@ const DASH_ANIM: Record<FlowDir, string> = {
   U: 'dashU',
 };
 
+// Vertical connectors sit at ~38%; on those steps the message chip reads better
+// left-aligned just to the right of the line rather than centred out in the gap.
+const VERTICAL_CHIP_LEFT = '43%';
+
 function Arrow({
   dir,
   color,
@@ -128,6 +132,7 @@ export function FlowDiagram({
   const [step, setStep] = useState(0);
   const cur = steps[step];
   const last = step === steps.length - 1;
+  const isVertical = cur.dir === 'D' || cur.dir === 'U';
 
   return (
     <div className={styles.wrap}>
@@ -187,8 +192,11 @@ export function FlowDiagram({
 
         <div
           key={step}
-          className={styles.chip}
-          style={{ left: cur.chip.left, top: cur.chip.top }}
+          className={isVertical ? `${styles.chip} ${styles.chipVertical}` : styles.chip}
+          style={{
+            left: isVertical ? VERTICAL_CHIP_LEFT : cur.chip.left,
+            top: cur.chip.top,
+          }}
         >
           <span
             className={
