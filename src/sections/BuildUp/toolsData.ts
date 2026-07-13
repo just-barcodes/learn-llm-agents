@@ -1,4 +1,5 @@
 import type { FlowStep } from '../../components/FlowDiagram/FlowDiagram.tsx';
+import { CHIP_AT, CHIP_COLOR, LEG } from './flowLegs.ts';
 
 export interface ToolExample {
   icon: string;
@@ -17,77 +18,15 @@ export const TOOL_EXAMPLES: ToolExample[] = [
   { icon: '🤖', name: 'Another agent', desc: 'hand a sub-task to a specialist' },
 ];
 
-// Reusable connector geometries for the horizontal (user↔harness, harness↔llm)
-// and vertical (harness↔tool) legs of the diagram.
-const LEG_USER = {
-  R: {
-    left: '12%',
-    top: 'calc(34% - 2px)',
-    width: '22%',
-    height: '3px',
-    angle: '90deg',
-    arrowLeft: '33.5%',
-    arrowTop: 'calc(34% - 8px)',
-  },
-  L: {
-    left: '12%',
-    top: 'calc(34% - 2px)',
-    width: '22%',
-    height: '3px',
-    angle: '90deg',
-    arrowLeft: '11.5%',
-    arrowTop: 'calc(34% - 8px)',
-  },
-};
-const LEG_LLM = {
-  R: {
-    left: '42%',
-    top: 'calc(34% - 2px)',
-    width: '26%',
-    height: '3px',
-    angle: '90deg',
-    arrowLeft: '67.5%',
-    arrowTop: 'calc(34% - 8px)',
-  },
-  L: {
-    left: '42%',
-    top: 'calc(34% - 2px)',
-    width: '26%',
-    height: '3px',
-    angle: '90deg',
-    arrowLeft: '41.5%',
-    arrowTop: 'calc(34% - 8px)',
-  },
-};
-const LEG_TOOL = {
-  D: {
-    left: 'calc(38% - 1.5px)',
-    top: '50%',
-    width: '3px',
-    height: '21%',
-    angle: '180deg',
-    arrowLeft: 'calc(38% - 6.5px)',
-    arrowTop: '70%',
-  },
-  U: {
-    left: 'calc(38% - 1.5px)',
-    top: '50%',
-    width: '3px',
-    height: '21%',
-    angle: '180deg',
-    arrowLeft: 'calc(38% - 6.5px)',
-    arrowTop: 'calc(50% - 4px)',
-  },
-};
+const LEG_USER = { R: LEG.userR, L: LEG.userL };
+const LEG_LLM = { R: LEG.llmR, L: LEG.llmL };
+const LEG_TOOL = { D: LEG.vertD, U: LEG.vertU };
 
-const CHIP_USER = { left: '23%', top: '10%' };
-const CHIP_LLM = { left: '55%', top: '10%' };
-const CHIP_TOOL = { left: '57%', top: '61%' };
+const CHIP_USER = CHIP_AT.user;
+const CHIP_LLM = CHIP_AT.llm;
+const CHIP_TOOL = CHIP_AT.vert;
 
-const GREY = { bg: '#343838', border: '#4a4f4e', fg: '#d8cdb8' };
-const AMBER = { bg: '#3a2d15', border: '#e8a04c', fg: '#e8d9bd' };
-const GREEN = { bg: '#1e2620', border: '#7a8a5e', fg: '#cfe0bd' };
-const GREEN_OUT = { bg: '#3d4a35', border: '#7a8a5e', fg: '#cfe0bd' };
+const { grey: GREY, amber: AMBER, green: GREEN, greenOut: GREEN_OUT } = CHIP_COLOR;
 
 export const TOOL_STEPS: FlowStep[] = [
   {
