@@ -1,0 +1,51 @@
+.panel {
+  padding-top: 34px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+@media (max-width: 640px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: #232827;
+  border: 1px solid #343838;
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+.cardTitle {
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 8px;
+  color: var(--green-soft);
+}
+.cardBody {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--fg-muted);
+  margin: 0;
+}
+
+.note {
+  background: #262b2a;
+  border: 1px solid #343838;
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin-top: 22px;
+}
+.note p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--fg-muted);
+  margin: 0 0 12px;
+}
+.note p:last-child {
+  margin-bottom: 0;
+}

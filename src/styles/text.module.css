@@ -1,0 +1,46 @@
+/* Reusable typographic scale shared across sections. */
+.h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0 0 14px;
+  letter-spacing: -0.01em;
+}
+.h3 {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+.h4 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+.lead {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--fg-muted);
+  max-width: 720px;
+  margin: 0 0 20px;
+}
+.body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--fg-muted);
+  max-width: 720px;
+  margin: 0 0 18px;
+}
+.small {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--fg-dim);
+  max-width: 720px;
+  margin: 0 0 26px;
+}
+.eyebrow {
+  font: 600 10px var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin: 0 0 10px;
+}

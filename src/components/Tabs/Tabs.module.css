@@ -1,0 +1,35 @@
+.tablist {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 24px 0 0;
+  border-bottom: 1px solid #2c3030;
+}
+
+.tab {
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 11px 18px;
+  border-radius: 10px 10px 0 0;
+  font-weight: 700;
+  font-size: 13.5px;
+  font-family: inherit;
+  background: #232827;
+  color: var(--fg-muted);
+  border: 1px solid #343838;
+  border-bottom: none;
+  transform: translateY(1px);
+  transition: all 0.2s;
+}
+.tab:hover {
+  color: var(--accent);
+}
+
+.tabActive {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}
+.tabActive:hover {
+  color: var(--accent-ink);
+}
