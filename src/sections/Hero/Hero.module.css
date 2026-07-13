@@ -1,0 +1,167 @@
+.hero {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 88px var(--page-pad) 64px;
+  text-align: center;
+}
+
+.title {
+  font-size: 58px;
+  line-height: 1.06;
+  margin: 0 0 22px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.intro {
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--fg-muted);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ---- animated core ---- */
+.core {
+  max-width: 760px;
+  margin: 52px auto 0;
+  background: #262b2a;
+  border: 1px solid #343838;
+  border-radius: 16px;
+  padding: 30px 26px;
+  overflow: hidden;
+}
+
+.flowRow {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.stream {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  height: 32px;
+}
+.streamIn {
+  mask-image: linear-gradient(90deg, transparent, black 22%, black 100%);
+}
+.streamOut {
+  mask-image: linear-gradient(90deg, black 0%, black 78%, transparent);
+}
+
+.track {
+  display: flex;
+  position: absolute;
+  transform: translateX(0);
+}
+.tokens {
+  display: flex;
+  gap: 8px;
+  padding-right: 8px;
+}
+
+.token {
+  font: 500 12.5px var(--font-mono);
+  padding: 7px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+.tokenIn {
+  background: #343838;
+  color: #d8cdb8;
+}
+.tokenOut {
+  background: #3d4a35;
+  color: #cfe0bd;
+}
+
+.badge {
+  align-self: center;
+  font: 600 10px var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 6px 9px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+.badgeIn {
+  color: var(--fg-dim);
+  border: 1px dashed #4a4f4e;
+}
+.badgeOut {
+  color: var(--green-soft);
+  border: 1px dashed #4a5540;
+}
+.spacer {
+  flex: none;
+  width: 150px;
+}
+
+.llm {
+  flex: none;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: pulseRing 3s ease-in-out infinite;
+}
+.llmIcon {
+  display: block;
+  margin-bottom: 1px;
+}
+.llmLabel {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--accent-ink);
+}
+
+/* ---- prompt / completion readout ---- */
+.readout {
+  margin-top: 16px;
+  background: #141616;
+  border: 1px solid #2c3030;
+  border-radius: 12px;
+  padding: 16px 18px;
+  text-align: left;
+}
+.readoutRow {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+.readoutRow + .readoutRow {
+  margin-top: 10px;
+}
+.readoutLabel {
+  flex: none;
+  width: 82px;
+}
+.readoutLabelTerm {
+  font: 600 10px var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.readoutValue {
+  font: 400 13.5px/1.5 var(--font-mono);
+}
+.valueIn {
+  color: #d8cdb8;
+}
+.valueOut {
+  color: #cfe0bd;
+}
+.caret {
+  animation: blink 1s step-end infinite;
+}
+
+.hint {
+  font-size: 13px;
+  color: var(--fg-dim);
+  margin: 22px 0 0;
+}
