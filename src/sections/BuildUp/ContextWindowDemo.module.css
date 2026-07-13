@@ -157,6 +157,47 @@
   top: 50%;
   height: 3px;
 }
+/* "reasoning privately" — a purple round-trip to and from the LLM */
+.thinkLine {
+  position: absolute;
+  left: 57%;
+  right: 2px;
+  height: 3px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--purple) 0 8px,
+    transparent 8px 15px
+  );
+}
+.thinkLineTop {
+  top: calc(50% - 8px);
+  animation: dashR 0.7s linear infinite;
+}
+.thinkLineBottom {
+  top: calc(50% + 5px);
+  animation: dashL 0.7s linear infinite;
+}
+.thinkArrowIn {
+  position: absolute;
+  right: 0;
+  top: calc(50% - 13.5px);
+  width: 0;
+  height: 0;
+  border-top: 5.5px solid transparent;
+  border-bottom: 5.5px solid transparent;
+  border-left: 10px solid var(--purple);
+}
+.thinkArrowOut {
+  position: absolute;
+  left: 57%;
+  top: calc(50% - 0.5px);
+  width: 0;
+  height: 0;
+  border-top: 5.5px solid transparent;
+  border-bottom: 5.5px solid transparent;
+  border-right: 10px solid var(--purple);
+}
+
 .chip {
   position: absolute;
   top: 2%;

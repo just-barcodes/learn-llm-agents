@@ -184,6 +184,15 @@ export function ContextWindowDemo() {
               }}
             />
           )}
+          {isThink && (
+            <>
+              {/* the model reasoning to and from itself, near the LLM */}
+              <div className={`${styles.thinkLine} ${styles.thinkLineTop}`} />
+              <div className={styles.thinkArrowIn} />
+              <div className={`${styles.thinkLine} ${styles.thinkLineBottom}`} />
+              <div className={styles.thinkArrowOut} />
+            </>
+          )}
           {chip && (
             <div className={isThink ? `${styles.chip} ${styles.chipMid}` : styles.chip}>
               <span className={styles.chipText} style={{ borderColor: accent }}>
