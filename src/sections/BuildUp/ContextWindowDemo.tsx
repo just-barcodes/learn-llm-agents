@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { Term } from '../../components/glossary/Term.tsx';
 import { LlmNode } from '../../components/LlmNode/LlmNode.tsx';
+import { useInViewOnce } from '../../hooks/useInViewOnce.ts';
 import { useContextWindow } from './useContextWindow.ts';
 import type { BlockKind } from './contextData.ts';
 import type { DerivedBlock } from './useContextWindow.ts';
@@ -92,6 +94,18 @@ function ContextBlockRow({ block }: { block: DerivedBlock }) {
 /** Interactive demo: the context window filling up (and overflowing) turn by turn. */
 export function ContextWindowDemo() {
   const ctx = useContextWindow();
+  const [demoRef, seen] = useInViewOnce<HTMLDivElement>(0.55);
+  const [coachDismissed, setCoachDismissed] = useState(false);
+  const coach = seen && !coachDismissed;
+
+  const onStep = () => {
+    if (coach) {
+      setCoachDismissed(true); // first click just dismisses the hint
+      return;
+    }
+    ctx.next();
+  };
+
   const kind = ctx.currentKind;
   const accent = KIND_STYLE[kind].accent;
   const chip =
@@ -99,7 +113,13 @@ export function ContextWindowDemo() {
   const isThink = kind === 'think';
 
   return (
-    <div className={styles.demo}>
+    <div className={styles.demo} ref={demoRef}>
+      {coach && (
+        <>
+          <div className={styles.coachOverlay} />
+          <div className={styles.coachHint}>click here to advance →</div>
+        </>
+      )}
       <div className={styles.controls}>
         <div className={styles.modeToggle} role="group" aria-label="Reasoning mode">
           <button
@@ -122,9 +142,9 @@ export function ContextWindowDemo() {
             ↺ Restart
           </button>
           <button
-            className={styles.step}
-            onClick={ctx.next}
-            disabled={ctx.done}
+            className={coach ? `${styles.step} ${styles.stepCoach}` : styles.step}
+            onClick={onStep}
+            disabled={ctx.done && !coach}
             aria-label="Advance the conversation"
           >
             {ctx.done ? 'Chat complete ✓' : 'Step →'}

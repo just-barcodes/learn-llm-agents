@@ -7,6 +7,32 @@
   margin-bottom: 30px;
 }
 
+.coachOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  border-radius: 18px;
+  background: rgba(20, 22, 22, 0.5);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  pointer-events: none;
+  animation: popIn 0.35s ease;
+}
+.coachHint {
+  position: absolute;
+  top: 18px;
+  right: 150px;
+  z-index: 6;
+  font: 800 21px var(--font-mono);
+  letter-spacing: 0.01em;
+  color: var(--accent);
+  pointer-events: none;
+  white-space: nowrap;
+  animation:
+    popIn 0.5s ease,
+    shakeX 1.25s ease-in-out infinite;
+}
+
 .controls {
   display: flex;
   align-items: center;
@@ -79,6 +105,12 @@
   cursor: default;
   background: #2c3232;
   color: var(--fg-dim);
+}
+.stepCoach {
+  position: relative;
+  z-index: 6;
+  transform: scale(1.07);
+  animation: pulseRing 1.6s ease-in-out infinite;
 }
 
 /* ---- flow scene ---- */
