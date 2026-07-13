@@ -6,16 +6,7 @@ import { ToolsPanel } from './ToolsPanel.tsx';
 import { RagPanel } from './RagPanel.tsx';
 import { OrchestrationPanel } from './OrchestrationPanel.tsx';
 import { SafetyPanel } from './SafetyPanel.tsx';
-import styles from './BuildUp.module.css';
-
-function Placeholder({ title }: { title: string }) {
-  return (
-    <div className={styles.placeholder}>
-      <h3 className={text.h3}>{title}</h3>
-      <p className={text.body}>This panel is coming next.</p>
-    </div>
-  );
-}
+import { ProtocolsPanel } from './ProtocolsPanel.tsx';
 
 const tabs: TabItem[] = [
   { id: 'chat', label: '1 · LLM chat', render: () => <ConversationPanel /> },
@@ -23,11 +14,7 @@ const tabs: TabItem[] = [
   { id: 'rag', label: '3 · Retrieval (RAG)', render: () => <RagPanel /> },
   { id: 'orch', label: '4 · Orchestration', render: () => <OrchestrationPanel /> },
   { id: 'safety', label: '5 · Safety & limits', render: () => <SafetyPanel /> },
-  {
-    id: 'proto',
-    label: '6 · Protocols',
-    render: () => <Placeholder title="Getting agents to plug into everything" />,
-  },
+  { id: 'proto', label: '6 · Protocols', render: () => <ProtocolsPanel /> },
 ];
 
 /** The tabbed walkthrough: a plain chat model grown into an agent, one capability per tab. */

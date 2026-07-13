@@ -1,0 +1,49 @@
+.protocols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.related {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 26px;
+}
+@media (max-width: 640px) {
+  .protocols,
+  .related {
+    grid-template-columns: 1fr;
+  }
+}
+
+.protocol {
+  background: #232827;
+  border: 1px solid #343838;
+  border-radius: 12px;
+  padding: 20px 22px;
+}
+.protocolTitle {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 3px;
+}
+.protocolMeta {
+  font: 600 10.5px var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin-bottom: 10px;
+}
+.protocolBody {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--fg-muted);
+  margin: 0 0 10px;
+}
+.protocolNote {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--fg-dim);
+  margin: 0;
+}
