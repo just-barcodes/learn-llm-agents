@@ -71,27 +71,34 @@ function Arrow({
   };
   const styleByDir: Record<FlowDir, React.CSSProperties> = {
     R: {
-      borderTop: '6.5px solid transparent',
-      borderBottom: '6.5px solid transparent',
-      borderLeft: `11px solid ${color}`,
+      borderTop: '8px solid transparent',
+      borderBottom: '8px solid transparent',
+      borderLeft: `13px solid ${color}`,
     },
     L: {
-      borderTop: '6.5px solid transparent',
-      borderBottom: '6.5px solid transparent',
-      borderRight: `11px solid ${color}`,
+      borderTop: '8px solid transparent',
+      borderBottom: '8px solid transparent',
+      borderRight: `13px solid ${color}`,
     },
     D: {
-      borderLeft: '6.5px solid transparent',
-      borderRight: '6.5px solid transparent',
-      borderTop: `11px solid ${color}`,
+      borderLeft: '8px solid transparent',
+      borderRight: '8px solid transparent',
+      borderTop: `13px solid ${color}`,
     },
     U: {
-      borderLeft: '6.5px solid transparent',
-      borderRight: '6.5px solid transparent',
-      borderBottom: `11px solid ${color}`,
+      borderLeft: '8px solid transparent',
+      borderRight: '8px solid transparent',
+      borderBottom: `13px solid ${color}`,
     },
   };
-  return <div style={{ ...base, ...styleByDir[dir] }} />;
+  // Centre the arrowhead across its connector. The step data anchors the
+  // triangle's top-left corner (tuned for the old size), so nudge it onto the
+  // line's centre: horizontal lines need 0.5px, vertical lines 1.5px.
+  const centred: React.CSSProperties =
+    dir === 'R' || dir === 'L'
+      ? { transform: 'translateY(-0.5px)' }
+      : { transform: 'translateX(-1.5px)' };
+  return <div style={{ ...base, ...styleByDir[dir], ...centred }} />;
 }
 
 interface FlowDiagramProps {

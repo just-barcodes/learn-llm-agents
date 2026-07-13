@@ -184,6 +184,12 @@ export function ContextWindowDemo() {
               }}
             />
           )}
+          {kind === 'user' && (
+            <div className={styles.wireArrowR} style={{ borderLeftColor: accent }} />
+          )}
+          {kind === 'asst' && (
+            <div className={styles.wireArrowL} style={{ borderRightColor: accent }} />
+          )}
           {isThink && (
             <>
               {/* the model reasoning to and from itself, near the LLM */}
