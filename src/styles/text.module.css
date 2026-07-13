@@ -41,6 +41,6 @@
   font: 700 15px var(--font-mono);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--fg-dim);
   margin: 0 0 12px;
 }
