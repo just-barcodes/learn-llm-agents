@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react';
 import { Term } from '../../components/glossary/Term.tsx';
 import {
-  CompassIcon,
   GlobeIcon,
   IdCardIcon,
   InlineIcon,
@@ -73,20 +72,6 @@ export function ProtocolsPanel() {
             as a peer.
           </p>
         </div>
-      </div>
-
-      <div className={panel.aside} style={{ marginTop: 0, marginBottom: 26 }}>
-        <div className={panel.asideTitle}>
-          <InlineIcon>
-            <CompassIcon size={16} />
-          </InlineIcon>
-          One line to remember them by
-        </div>
-        <p>
-          <b>MCP</b> connects an agent <em>down</em> to its tools and data; <b>A2A</b>{' '}
-          connects an agent <em>across</em> to other agents. They are complementary, a
-          single system often speaks both at once.
-        </p>
       </div>
 
       <h4 className={text.h4}>Related standards you’ll bump into</h4>
