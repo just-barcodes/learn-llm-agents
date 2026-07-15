@@ -16,17 +16,26 @@ const OUT_TOKENS = ['umbrella', 'small', 'a', 'bring', 'and', 'layers', 'light',
 
 const clamp01 = (x: number) => Math.max(0, Math.min(1, x));
 
-/** Slide a token stream so its end aligns with the model as progress hits 1. */
-function applyFlow(
-  el: HTMLElement | null,
-  progress: number,
-  bright: boolean,
-  tween: string,
-) {
-  if (!el || !el.parentElement) return;
-  const overflow = Math.max(0, el.scrollWidth - el.parentElement.clientWidth);
+// Where the token train sits at progress 0 (mouth empty) and progress 1 (the
+// end-of-prompt/stop badge docked at the model). Both are pure pixel offsets
+// derived from a single cached measurement, so the resting point never drifts.
+type Geom = { start: number; stop: number };
+
+/** Measure a track: full content width, viewport width, and the badge width. */
+function measure(track: HTMLElement, dockAtRight: boolean): Geom {
+  const viewport = track.parentElement?.clientWidth ?? 0;
+  const width = track.scrollWidth;
+  const badge = track.querySelector<HTMLElement>('[data-badge]');
+  const badgeW = badge?.offsetWidth ?? 0;
+  // Both trains start fully off to the left with the model's mouth empty.
+  // At the end the badge docks flush against the model: on the right edge for
+  // the inbound stream, on the left edge (offset 0) for the outbound stream.
+  return { start: -width, stop: dockAtRight ? viewport - badgeW : 0 };
+}
+
+function setFlow(el: HTMLElement, x: number, bright: boolean, tween: string) {
   el.style.transition = tween;
-  el.style.transform = `translateX(${(progress - 1) * overflow}px)`;
+  el.style.transform = `translateX(${x}px)`;
   el.style.opacity = bright ? '1' : '0.2';
 }
 
@@ -37,18 +46,45 @@ export function Hero() {
   const inRef = useRef<HTMLDivElement>(null);
   const outRef = useRef<HTMLDivElement>(null);
   const prevN = useRef<number | null>(null);
+  const geomIn = useRef<Geom | null>(null);
+  const geomOut = useRef<Geom | null>(null);
 
   const inputPhase = n <= PROMPT.length + GAP;
   const pIn = clamp01(n / PROMPT.length);
   const pOut = clamp01((n - PROMPT.length - GAP) / COMPLETION.length);
 
+  // Measure once on mount, and again whenever layout (or font loading) changes
+  // the track width — so the flow's stop point is stable across every loop.
+  useLayoutEffect(() => {
+    const remeasure = () => {
+      if (inRef.current) geomIn.current = measure(inRef.current, true);
+      if (outRef.current) geomOut.current = measure(outRef.current, false);
+    };
+    remeasure();
+    if (typeof ResizeObserver === 'undefined') return;
+    const ro = new ResizeObserver(remeasure);
+    for (const el of [inRef.current, outRef.current]) {
+      if (el) {
+        ro.observe(el);
+        if (el.parentElement) ro.observe(el.parentElement);
+      }
+    }
+    return () => ro.disconnect();
+  }, []);
+
   useLayoutEffect(() => {
     // Skip the transform tween on the wrap-around back to the start.
     const wrapped = prevN.current != null && n < prevN.current;
     prevN.current = n;
-    const tween = wrapped ? 'opacity .4s' : 'transform 95ms linear, opacity .4s';
-    applyFlow(inRef.current, pIn, inputPhase, tween);
-    applyFlow(outRef.current, pOut, !inputPhase, tween);
+    const tween = wrapped ? 'opacity .4s' : `transform ${TICK_MS}ms linear, opacity .4s`;
+    if (inRef.current && geomIn.current) {
+      const { start, stop } = geomIn.current;
+      setFlow(inRef.current, start + pIn * (stop - start), inputPhase, tween);
+    }
+    if (outRef.current && geomOut.current) {
+      const { start, stop } = geomOut.current;
+      setFlow(outRef.current, start + pOut * (stop - start), !inputPhase, tween);
+    }
   }, [n, pIn, pOut, inputPhase]);
 
   const typedIn = PROMPT.slice(0, Math.min(n, PROMPT.length));
@@ -71,14 +107,14 @@ export function Hero() {
           <div className={`${styles.stream} ${styles.streamIn}`}>
             <div ref={inRef} className={styles.track}>
               <div className={styles.tokens}>
+                <span data-badge className={`${styles.badge} ${styles.badgeIn}`}>
+                  ⏎ end of prompt
+                </span>
                 {IN_TOKENS.map((t, i) => (
                   <span key={i} className={`${styles.token} ${styles.tokenIn}`}>
                     {t}
                   </span>
                 ))}
-                <span className={`${styles.badge} ${styles.badgeIn}`}>
-                  ⏎ end of prompt
-                </span>
               </div>
             </div>
           </div>
@@ -97,15 +133,14 @@ export function Hero() {
           <div className={`${styles.stream} ${styles.streamOut}`}>
             <div ref={outRef} className={styles.track}>
               <div className={styles.tokens}>
+                <span data-badge className={`${styles.badge} ${styles.badgeOut}`}>
+                  ■ &lt;end&gt; token · stop
+                </span>
                 {OUT_TOKENS.map((t, i) => (
                   <span key={i} className={`${styles.token} ${styles.tokenOut}`}>
                     {t}
                   </span>
                 ))}
-                <span className={`${styles.badge} ${styles.badgeOut}`}>
-                  ■ &lt;end&gt; token · stop
-                </span>
-                <span aria-hidden="true" className={styles.spacer} />
               </div>
             </div>
           </div>

@@ -94,10 +94,6 @@
   color: var(--green-soft);
   border: 1px dashed var(--green);
 }
-.spacer {
-  flex: none;
-  width: 150px;
-}
 
 .llm {
   flex: none;
