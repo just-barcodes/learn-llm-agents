@@ -159,3 +159,15 @@
   --page-max: 1060px;
   --page-pad: 40px;
 }
+
+/* Tighter gutters as the viewport narrows, so content keeps its width. */
+@media (max-width: 900px) {
+  :root {
+    --page-pad: 26px;
+  }
+}
+@media (max-width: 560px) {
+  :root {
+    --page-pad: 18px;
+  }
+}

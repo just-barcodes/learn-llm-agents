@@ -1,12 +1,12 @@
 .hero {
   max-width: var(--page-max);
   margin: 0 auto;
-  padding: 88px var(--page-pad) 64px;
+  padding: clamp(48px, 9vw, 88px) var(--page-pad) clamp(40px, 7vw, 64px);
   text-align: center;
 }
 
 .title {
-  font-size: 58px;
+  font-size: clamp(34px, 8vw, 58px);
   line-height: 1.06;
   margin: 0 0 22px;
   font-weight: 700;
@@ -14,7 +14,7 @@
 }
 
 .intro {
-  font-size: 19px;
+  font-size: clamp(16px, 4.4vw, 19px);
   line-height: 1.65;
   color: var(--fg-muted);
   max-width: 640px;
@@ -160,4 +160,24 @@
   font-size: 13px;
   color: var(--fg-dim);
   margin: 22px 0 0;
+}
+
+@media (max-width: 560px) {
+  .core {
+    margin-top: 34px;
+    padding: 20px 15px;
+  }
+  .flowRow {
+    gap: 10px;
+  }
+  .llm {
+    width: 74px;
+    height: 74px;
+  }
+  .readout {
+    padding: 14px;
+  }
+  .readoutLabel {
+    width: 66px;
+  }
 }

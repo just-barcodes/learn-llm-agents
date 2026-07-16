@@ -152,64 +152,66 @@ export function FlowDiagram({
         </div>
       </div>
 
-      <div className={styles.scene} style={{ height: sceneHeight }}>
-        {nodes.map((node) => {
-          const active = cur.highlight.includes(node.id);
-          return (
-            <div
-              key={node.id}
-              className={styles.node}
-              style={{ left: node.left, top: node.top }}
-            >
-              {node.render(active, cur.color, step)}
-            </div>
-          );
-        })}
+      <div className={styles.sceneScroll}>
+        <div className={styles.scene} style={{ height: sceneHeight }}>
+          {nodes.map((node) => {
+            const active = cur.highlight.includes(node.id);
+            return (
+              <div
+                key={node.id}
+                className={styles.node}
+                style={{ left: node.left, top: node.top }}
+              >
+                {node.render(active, cur.color, step)}
+              </div>
+            );
+          })}
 
-        {cur.connector && (
-          <>
-            <div
-              className={styles.connector}
-              style={{
-                left: cur.connector.left,
-                top: cur.connector.top,
-                width: cur.connector.width,
-                height: cur.connector.height,
-                backgroundImage: `repeating-linear-gradient(${cur.connector.angle}, ${cur.color} 0 8px, transparent 8px 15px)`,
-                animation: `${DASH_ANIM[cur.dir]} .7s linear infinite`,
-              }}
-            />
-            <Arrow
-              dir={cur.dir}
-              color={cur.color}
-              left={cur.connector.arrowLeft}
-              top={cur.connector.arrowTop}
-            />
-          </>
-        )}
+          {cur.connector && (
+            <>
+              <div
+                className={styles.connector}
+                style={{
+                  left: cur.connector.left,
+                  top: cur.connector.top,
+                  width: cur.connector.width,
+                  height: cur.connector.height,
+                  backgroundImage: `repeating-linear-gradient(${cur.connector.angle}, ${cur.color} 0 8px, transparent 8px 15px)`,
+                  animation: `${DASH_ANIM[cur.dir]} .7s linear infinite`,
+                }}
+              />
+              <Arrow
+                dir={cur.dir}
+                color={cur.color}
+                left={cur.connector.arrowLeft}
+                top={cur.connector.arrowTop}
+              />
+            </>
+          )}
 
-        {overlay?.(step)}
+          {overlay?.(step)}
 
-        <div
-          key={step}
-          className={isVertical ? `${styles.chip} ${styles.chipVertical}` : styles.chip}
-          style={{
-            left: isVertical ? VERTICAL_CHIP_LEFT : cur.chip.left,
-            top: cur.chip.top,
-          }}
-        >
-          <span
-            className={
-              cur.chip.wrap ? `${styles.chipText} ${styles.chipWrap}` : styles.chipText
-            }
+          <div
+            key={step}
+            className={isVertical ? `${styles.chip} ${styles.chipVertical}` : styles.chip}
             style={{
-              background: cur.chip.bg,
-              borderColor: cur.chip.border,
-              color: cur.chip.fg,
+              left: isVertical ? VERTICAL_CHIP_LEFT : cur.chip.left,
+              top: cur.chip.top,
             }}
           >
-            {cur.chip.text}
-          </span>
+            <span
+              className={
+                cur.chip.wrap ? `${styles.chipText} ${styles.chipWrap}` : styles.chipText
+              }
+              style={{
+                background: cur.chip.bg,
+                borderColor: cur.chip.border,
+                color: cur.chip.fg,
+              }}
+            >
+              {cur.chip.text}
+            </span>
+          </div>
         </div>
       </div>
 

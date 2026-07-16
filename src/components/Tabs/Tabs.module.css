@@ -33,3 +33,13 @@
 .tabActive:hover {
   color: var(--accent-ink);
 }
+
+@media (max-width: 560px) {
+  .tablist {
+    gap: 5px;
+  }
+  .tab {
+    padding: 9px 12px;
+    font-size: 12.5px;
+  }
+}

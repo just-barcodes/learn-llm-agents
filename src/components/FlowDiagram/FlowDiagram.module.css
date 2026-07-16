@@ -61,8 +61,17 @@
   color: var(--fg-dim);
 }
 
+/* The scene keeps a legible minimum width; on narrow screens it scrolls
+   horizontally inside this wrapper rather than collapsing the diagram. */
+.sceneScroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
+}
 .scene {
   position: relative;
+  min-width: 460px;
 }
 .node {
   position: absolute;
@@ -167,4 +176,17 @@
   border-radius: 0 8px 8px 0;
   white-space: pre-wrap;
   overflow-x: auto;
+}
+
+@media (max-width: 560px) {
+  .wrap {
+    padding: 18px 14px 16px;
+  }
+  .chipText {
+    font-size: 10.5px;
+    padding: 6px 9px;
+  }
+  .chipWrap {
+    max-width: 190px;
+  }
 }

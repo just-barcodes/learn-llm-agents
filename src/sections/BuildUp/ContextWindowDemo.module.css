@@ -346,3 +346,20 @@
   color: var(--fg-muted);
   margin: 22px 0 0;
 }
+
+@media (max-width: 560px) {
+  .demo {
+    padding: 18px 15px;
+  }
+  .coachHint {
+    top: 12px;
+    right: 16px;
+    font-size: 17px;
+  }
+  .chip {
+    max-width: 190px;
+  }
+  .chipText {
+    font-size: 10px;
+  }
+}
