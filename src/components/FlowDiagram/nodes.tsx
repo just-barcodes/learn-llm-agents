@@ -1,3 +1,4 @@
+import { LlmGlyph, UserGlyph } from './icons.tsx';
 import styles from './nodes.module.css';
 
 const IDLE_BORDER = 'var(--node-idle-border)';
@@ -21,10 +22,7 @@ export function UserNode({ active, color }: { active: boolean; color: string }) 
         style={{ width: 60, height: 60, borderColor: active ? color : IDLE_BORDER }}
         aria-label="You"
       >
-        <svg viewBox="0 0 24 24" width="54%" height="54%">
-          <circle cx="12" cy="8.4" r="4.1" fill="var(--icon-stroke)" />
-          <path d="M4.4 20.5a7.6 7.6 0 0 1 15.2 0Z" fill="var(--icon-stroke)" />
-        </svg>
+        <UserGlyph />
       </div>
       <NodeLabel label="You" />
     </>
@@ -59,13 +57,7 @@ export function LlmFlowNode({
         }}
         aria-label="LLM"
       >
-        <svg viewBox="0 0 24 24" width={size * 0.37} height={size * 0.37}>
-          <g fill={LLM_ACCENT}>
-            <rect x="5" y="6.5" width="14" height="2.3" rx="1.15" />
-            <rect x="5" y="10.85" width="14" height="2.3" rx="1.15" />
-            <rect x="5" y="15.2" width="8.5" height="2.3" rx="1.15" />
-          </g>
-        </svg>
+        <LlmGlyph size={size * 0.37} />
         <span className={styles.llmLabel}>LLM</span>
       </div>
       {label ? <NodeLabel label={label} sub={sub} /> : sub && <NodeLabel label={sub} />}

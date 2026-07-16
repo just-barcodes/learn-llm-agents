@@ -4,6 +4,7 @@ import {
   GearIcon,
   InlineIcon,
   ThoughtIcon,
+  UserGlyph,
 } from '../../components/FlowDiagram/icons.tsx';
 import { LlmNode } from '../../components/LlmNode/LlmNode.tsx';
 import { useInViewOnce } from '../../hooks/useInViewOnce.ts';
@@ -55,11 +56,11 @@ const DROPPED_STYLE: KindStyle = {
   text: 'var(--chip-coral-fg)',
 };
 
-const FLOW_CHIP: Record<BlockKind, string> = {
+// Only the non-message phases get a synthetic chip; user/asst chips come from
+// the latest block's own text.
+const FLOW_CHIP: Partial<Record<BlockKind, string>> = {
   sys: 'system prompt loaded',
-  user: '',
   think: 'reasoning privately…',
-  asst: '',
 };
 
 function meterColor(pct: number, over: boolean): string {
@@ -193,10 +194,7 @@ export function ContextWindowDemo() {
             }}
             aria-label="You"
           >
-            <svg viewBox="0 0 24 24" width="54%" height="54%">
-              <circle cx="12" cy="8.4" r="4.1" fill="var(--icon-stroke)" />
-              <path d="M4.4 20.5a7.6 7.6 0 0 1 15.2 0Z" fill="var(--icon-stroke)" />
-            </svg>
+            <UserGlyph />
           </div>
           <div className={styles.actorLabel}>You</div>
         </div>

@@ -1,4 +1,5 @@
 import type { FlowStep } from '../../components/FlowDiagram/FlowDiagram.tsx';
+import { LEG } from './flowLegs.ts';
 
 export interface SafeStep extends FlowStep {
   verdict?: string;
@@ -10,55 +11,11 @@ export interface SafeStep extends FlowStep {
   human?: 'pending' | 'approved';
 }
 
-const OUT = {
-  R: {
-    left: '12%',
-    top: 'calc(34% - 2px)',
-    width: '22%',
-    height: '3px',
-    angle: '90deg',
-    arrowLeft: '33.5%',
-    arrowTop: 'calc(34% - 8px)',
-  },
-  L: {
-    left: '12%',
-    top: 'calc(34% - 2px)',
-    width: '22%',
-    height: '3px',
-    angle: '90deg',
-    arrowLeft: '11.5%',
-    arrowTop: 'calc(34% - 8px)',
-  },
-};
-const LLMC = {
-  L: {
-    left: '42%',
-    top: 'calc(34% - 2px)',
-    width: '26%',
-    height: '3px',
-    angle: '90deg',
-    arrowLeft: '41.5%',
-    arrowTop: 'calc(34% - 8px)',
-  },
-  R: {
-    left: '42%',
-    top: 'calc(34% - 2px)',
-    width: '26%',
-    height: '3px',
-    angle: '90deg',
-    arrowLeft: '67.5%',
-    arrowTop: 'calc(34% - 8px)',
-  },
-};
-const RES_D = {
-  left: 'calc(38% - 1.5px)',
-  top: '50%',
-  width: '3px',
-  height: '21%',
-  angle: '180deg',
-  arrowLeft: 'calc(38% - 6.5px)',
-  arrowTop: '70%',
-};
+// This panel's nodes sit on the same 34% row as the tools/RAG panels, so its
+// connectors are the shared flowLegs geometries.
+const OUT = { R: LEG.userR, L: LEG.userL };
+const LLMC = { L: LEG.llmL, R: LEG.llmR };
+const RES_D = LEG.vertD;
 
 export const SAFE_STEPS: SafeStep[] = [
   {

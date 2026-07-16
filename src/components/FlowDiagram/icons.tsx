@@ -34,6 +34,37 @@ export function InlineIcon({ children }: { children: React.ReactNode }) {
   );
 }
 
+/** The three-bar "LLM" glyph, shared by the hero and every LLM node. */
+export function LlmGlyph({
+  size,
+  fill = 'var(--accent)',
+  className,
+}: {
+  size: number;
+  fill?: string;
+  className?: string;
+}) {
+  return (
+    <svg viewBox="0 0 24 24" width={size} height={size} className={className}>
+      <g fill={fill}>
+        <rect x="5" y="6.5" width="14" height="2.3" rx="1.15" />
+        <rect x="5" y="10.85" width="14" height="2.3" rx="1.15" />
+        <rect x="5" y="15.2" width="8.5" height="2.3" rx="1.15" />
+      </g>
+    </svg>
+  );
+}
+
+/** The "You" avatar glyph, shared by the flow nodes and the context demo. */
+export function UserGlyph() {
+  return (
+    <svg viewBox="0 0 24 24" width="54%" height="54%">
+      <circle cx="12" cy="8.4" r="4.1" fill="var(--icon-stroke)" />
+      <path d="M4.4 20.5a7.6 7.6 0 0 1 15.2 0Z" fill="var(--icon-stroke)" />
+    </svg>
+  );
+}
+
 /** Web search — a globe with meridians. */
 export function GlobeIcon({ size = 26 }: { size?: number }) {
   return (

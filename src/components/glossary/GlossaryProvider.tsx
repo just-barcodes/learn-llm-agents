@@ -9,7 +9,8 @@ interface ActiveTip {
   y: number;
 }
 
-const TOOLTIP_WIDTH = 320;
+// Mirrors the tooltip's max-width in glossary.module.css.
+const TOOLTIP_WIDTH = 300;
 
 /**
  * Provides the glossary tooltip controller to descendants and renders the
@@ -27,7 +28,7 @@ export function GlossaryProvider({ children }: { children: React.ReactNode }) {
   );
 
   const entry = tip ? glossary[tip.term] : null;
-  const left = tip ? Math.min(tip.x, window.innerWidth - TOOLTIP_WIDTH) : 0;
+  const left = tip ? Math.max(0, Math.min(tip.x, window.innerWidth - TOOLTIP_WIDTH)) : 0;
 
   return (
     <GlossaryContext value={controller}>

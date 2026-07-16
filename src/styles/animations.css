@@ -2,12 +2,6 @@
  * Shared keyframes reused across multiple sections. Section-specific
  * animations live alongside their component's CSS module.
  */
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 @keyframes pulseRing {
   0% {
     box-shadow:

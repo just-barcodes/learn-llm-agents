@@ -58,7 +58,7 @@ export const TOOL_STEPS: FlowStep[] = [
     dir: 'L',
     connector: LEG_LLM.L,
     chip: {
-      text: 'tool_use: web.search("Basel hotels") · just text!',
+      text: 'tool_use: web_search("Basel hotels") · just text!',
       ...CHIP_LLM,
       ...AMBER,
     },

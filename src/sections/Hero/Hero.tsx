@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef } from 'react';
 import { Term } from '../../components/glossary/Term.tsx';
+import { LlmGlyph } from '../../components/FlowDiagram/icons.tsx';
 import { useTicker } from '../../hooks/useTicker.ts';
 import styles from './Hero.module.css';
 
@@ -120,13 +121,7 @@ export function Hero() {
           </div>
 
           <div className={styles.llm} aria-label="LLM">
-            <svg viewBox="0 0 24 24" width="30" height="30" className={styles.llmIcon}>
-              <g fill="var(--accent-ink)">
-                <rect x="5" y="6.5" width="14" height="2.3" rx="1.15" />
-                <rect x="5" y="10.85" width="14" height="2.3" rx="1.15" />
-                <rect x="5" y="15.2" width="8.5" height="2.3" rx="1.15" />
-              </g>
-            </svg>
+            <LlmGlyph size={30} fill="var(--accent-ink)" className={styles.llmIcon} />
             <span className={styles.llmLabel}>LLM</span>
           </div>
 

@@ -27,7 +27,7 @@ export function ProtocolsPanel() {
       <h3 className={text.h3}>Getting agents to plug into everything</h3>
       <p className={text.body}>
         Once every team builds tools and agents their own way, connecting them becomes an
-        N×N mess. A handful of open protocols fix that with shared plugs, so any agent can
+        M×N mess. A handful of open protocols fix that with shared plugs, so any agent can
         reach any tool, and any agent can talk to any other.
       </p>
 
@@ -64,7 +64,7 @@ export function ProtocolsPanel() {
           <div className={styles.protocolMeta}>Agent2Agent · Google, 2025</div>
           <p className={styles.protocolBody}>
             A standard for agents built by <em>different</em> teams or vendors to work
-            together: publish a skill card, discover each other, hand off a task, and
+            together: publish an Agent Card, discover each other, hand off a task, and
             exchange results over plain HTTP/JSON, without sharing code or memory.
           </p>
           <p className={styles.protocolNote}>
