@@ -26,7 +26,9 @@ describe('Hero', () => {
     renderHero();
     // Advance enough ticks that the typed prompt is longer than any single
     // token, so the match is unambiguous.
-    act(() => vi.advanceTimersByTime(95 * 12));
+    act(() => {
+      vi.advanceTimersByTime(95 * 12);
+    });
     expect(screen.getByText(/what should/)).toBeInTheDocument();
   });
 });

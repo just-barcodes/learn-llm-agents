@@ -27,7 +27,7 @@ export interface ContextWindowState {
   currentKind: BlockKind;
   setMode(thinking: boolean): void;
   next(): void;
-  reset(): void;
+  reset: () => void;
 }
 
 /** Which blocks fall out of the window, oldest-first, keeping the system prompt. */

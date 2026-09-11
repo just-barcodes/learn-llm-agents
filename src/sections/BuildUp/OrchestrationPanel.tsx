@@ -45,9 +45,9 @@ const RESOURCE_ICONS: Record<string, ReactNode> = {
 
 /** Icons for the sub-agent's think → act → observe loop, in SUB_LOOP order. */
 const SUB_LOOP_ICONS: ReactNode[] = [
-  <ThoughtIcon size={15} />,
-  <WrenchIcon size={15} />,
-  <EyeIcon size={15} />,
+  <ThoughtIcon key="think" size={15} />,
+  <WrenchIcon key="act" size={15} />,
+  <EyeIcon key="observe" size={15} />,
 ];
 
 function resourceIcon(key: string) {

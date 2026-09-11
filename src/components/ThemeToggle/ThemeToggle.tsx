@@ -59,7 +59,7 @@ export function ThemeToggle() {
   const [systemDark, setSystemDark] = useState(prefersDark);
 
   useEffect(() => {
-    if (typeof window.matchMedia !== 'function') return;
+    if (typeof window.matchMedia !== 'function') return undefined;
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
     const onChange = (e: MediaQueryListEvent) => setSystemDark(e.matches);
     mq.addEventListener('change', onChange);

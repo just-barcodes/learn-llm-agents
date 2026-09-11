@@ -16,6 +16,7 @@ export function Term({ term, children }: TermProps) {
 
   return (
     <span
+      role="button"
       tabIndex={0}
       className={styles.term}
       onMouseEnter={(e) => glossary.show(term, e.clientX, e.clientY)}
