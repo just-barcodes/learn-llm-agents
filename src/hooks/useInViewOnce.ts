@@ -13,7 +13,7 @@ export function useInViewOnce<T extends Element>(
 
   useEffect(() => {
     const el = ref.current;
-    if (!el || seen || typeof IntersectionObserver === 'undefined') return;
+    if (!el || seen || typeof IntersectionObserver === 'undefined') return undefined;
 
     const observer = new IntersectionObserver(
       (entries) => {

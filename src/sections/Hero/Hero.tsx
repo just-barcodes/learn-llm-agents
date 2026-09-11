@@ -62,7 +62,7 @@ export function Hero() {
       if (outRef.current) geomOut.current = measure(outRef.current, false);
     };
     remeasure();
-    if (typeof ResizeObserver === 'undefined') return;
+    if (typeof ResizeObserver === 'undefined') return undefined;
     const ro = new ResizeObserver(remeasure);
     for (const el of [inRef.current, outRef.current]) {
       if (el) {
